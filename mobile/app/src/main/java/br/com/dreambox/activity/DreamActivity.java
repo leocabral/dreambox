@@ -1,11 +1,10 @@
-package br.com.dreambox.dreambox.activity;
+package br.com.dreambox.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import br.com.dreambox.dreambox.R;
+import br.com.dreambox.R;
 
 public class DreamActivity extends AppCompatActivity {
 
@@ -25,7 +24,7 @@ public class DreamActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_create_dream) {
             return true;
         }
 
