@@ -1,1 +1,2 @@
-node server.js
+cd web && python -m SimpleHTTPServer 8000
+
