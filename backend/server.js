@@ -1,9 +1,13 @@
-var http = require("http");
+var http = require('http');
 
-http.createServer(function (request, response) {
-	response.writeHead(200, {'Content-Type': 'text/plain'});
- 
-	response.end('Hello World\n');
-}).listen(8080);
+var finalhandler = require('finalhandler');
+var serveStatic = require('serve-static');
 
-console.log('Server running at http://127.0.0.1:8080/');
+var serve = serveStatic("../WEB/HTML/");
+
+var server = http.createServer(function(req, res) {
+  var done = finalhandler(req, res);
+  serve(req, res, done);
+});
+
+server.listen(8000);
