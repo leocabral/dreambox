@@ -19,11 +19,26 @@ canvas {
 
 img {
   position : absolute;
+}
+img.robot {
   right: 0;
   bottom: 0;
   margin-bottom: -130px;
   transform: rotate(10deg);  
   z-index: 9999;
+}
+
+ul.share-buttons{
+  list-style: none;
+  padding: 0;
+}
+
+ul.share-buttons li{
+  display: inline;
+}
+
+ul.share-buttons img{
+  width: 32px;
 }
 
 #clouds{
@@ -46,9 +61,10 @@ img {
 	transition: left 1s linear, transform 1s linear, top 1s linear, opacity 1s linear;
 }
 
+}
+
 .cloud.active-cloud {
 	top: 410px !important;
-	
 	opacity: 1 !important;
 	z-index: 1;
 	-webkit-transform: scale(5) !important;
@@ -157,7 +173,6 @@ background-color: #fff;
 }
 #new-cloud.active-cloud {
     opacity: 1;
-    left: 800px;
 }
 .with-hover:hover:after,
 .with-hover:hover:before,
@@ -222,7 +237,6 @@ background-color: #fff;
     
 }
 .active-cloud .opened-dream {
-    display: inline-block;
 	width: 100%;
 	height: 100%;
 	top: -30%;
@@ -254,7 +268,7 @@ background-color: #fff;
 .confirmation-button {
     outline: 0;
     cursor: pointer;
-background-color: #474;
+	background-color: #474;
     border: 0 none;
     border-radius: 3px;
     color: #000;
@@ -263,4 +277,30 @@ background-color: #474;
     padding: 5px;
     position: absolute;
     right: 0;
+}
+.confirmation-button:disabled {
+	background-color: #9E9E9E;
+}
+.confirmation-button.follow {
+    margin-top: 0px;
+    position: relative;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    left: 0;
+}
+
+.buttons {
+	left: 210%;
+	top: 180%;
+	display: flex;
+	position: relative;
+}
+
+
+.dream-error {
+	font-size: 3em;
+    width: 500px;
+    left: -65%;
+    position: relative;	
 }

@@ -10,6 +10,10 @@ import com.codetroopers.betterpickers.datepicker.DatePickerBuilder;
 import com.codetroopers.betterpickers.datepicker.DatePickerDialogFragment;
 import com.google.gson.JsonObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import br.com.dreambox.R;
 import br.com.dreambox.api.DreamboxApi;
 import br.com.dreambox.model.Dreamer;
@@ -49,14 +53,19 @@ public class DreamerActivity extends AppCompatActivity implements DatePickerDial
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dreamer);
         ButterKnife.bind(this);
-        setContentView(R.layout.activity_dreamer);
     }
 
     @OnClick(R.id.button_create_dreamer)
     public void createDreamer() {
         Dreamer dreamer = new Dreamer();
 
-        dreamer.setBirthday(birthday.getText().toString());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/mm/dd");
+        Date date = null;
+        try {
+            date = format.parse(birthday.getText().toString());
+        } catch (ParseException e) {
+        }
+        dreamer.setBirthday(date);
         dreamer.setName(name.getText().toString());
         dreamer.setEmail(email.getText().toString());
         dreamer.setFoundation(organization.getText().toString());
@@ -78,7 +87,7 @@ public class DreamerActivity extends AppCompatActivity implements DatePickerDial
                     }
                 });
 
-        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     @OnClick(R.id.dreamer_birthday)
