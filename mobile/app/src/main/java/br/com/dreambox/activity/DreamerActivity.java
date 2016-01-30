@@ -27,6 +27,7 @@ public class DreamerActivity extends AppCompatActivity implements DatePickerDial
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dreamer_acitivity);
         ButterKnife.bind(this);
+        setContentView(R.layout.activity_dreamer);
     }
 
     @OnClick(R.id.button_create_dreamer)
