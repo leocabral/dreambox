@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Dreamer {
 
+
+    private long code;
     private String name;
     private Integer age;
     private String city;
@@ -94,5 +96,13 @@ public class Dreamer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public long getCode() {
+        return code;
+    }
+
+    public void setCode(long code) {
+        this.code = code;
     }
 }
