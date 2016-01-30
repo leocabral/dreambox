@@ -334,6 +334,19 @@ $('img.robot').unbind('click').click(function(e) {
     e.stopPropagation();
 });
 
+$('#novo-sonho').unbind('click').click(function(e) {
+    $('#new-cloud').addClass('active-cloud');
+    e.stopPropagation();
+});
+
+$('#new-cloud').unbind('click').click(function(e) {
+    e.stopPropagation();
+});
+
+$('#meu-perfil').unbind('click').click(function(e) {
+    e.stopPropagation();
+});
+
 $(document).on('click',function() {
     $('.thinking').fadeOut();
     $('.active-cloud').removeClass('active-cloud').html('');
@@ -371,7 +384,7 @@ buildCreator(800);
 buildCreator(1000);
 buildCreator(1200);
 
-$('#clouds').on('click', '> div', function(e) {
+$('#clouds').on('click', '> div:not(#new-cloud)', function(e) {
 	$(this).addClass('active-cloud');
 	$(this).html(
 			  '<div class="opened-dream">'
