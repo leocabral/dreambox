@@ -2,7 +2,7 @@
     <string name="app_name">Dreambox</string>
     <string name="title_activity_dream">DreamActivity</string>
 
-    <string name="action_create_dream">Criar Sonho</string>
+    <string name="create_dream">Criar Sonho</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_sign_up">Cadastrar</string>
@@ -11,4 +11,10 @@
     <string name="surname">Sobrenome</string>
     <string name="email">Email</string>
     <string name="sign_up">cadastrar</string>
+
+    <string name="create_dream_text">Crie seu sonho aqui!</string>
+    <string name="description">Descrição</string>
+    <string name="title">Titulo</string>
+
+    <string name="title_activity_home">Home</string>
 </resources>
