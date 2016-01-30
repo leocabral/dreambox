@@ -90,11 +90,11 @@
         android:hint="@string/password_field" />
 
     <Button
+        android:id="@+id/button_create_dreamer"
         android:layout_marginTop="@dimen/edit_margin"
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/dreamer_button"
-        android:id="@+id/button_create_dreamer"/>
+        android:text="@string/dreamer_button"/>
 
 </LinearLayout>
