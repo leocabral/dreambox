@@ -3,20 +3,31 @@
 /*The container will also serve as the SKY*/
 
 *{ margin: 0; padding: 0;}
-
 body {
 	/*To hide the horizontal scroller appearing during the animation*/
+	background-color: #000000;
+	margin: 0px;
 	overflow: hidden;
 }
 
+canvas {
+	position: absolute;
+	top: 0;
+}
+
+img {
+  position : absolute;
+  right: 0;
+  bottom: 0;
+  margin-bottom: -130px;
+  transform: rotate(10deg);  
+  z-index: 9999;
+}
+
 #clouds{
-	padding: 100px 0;
-	background: #c9dbe9;
-	background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
-	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
-	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
 	position: relative;
 	height: 100%;
+	z-index: 9999;
 }
 
 /*Time to finalise the cloud shape*/
