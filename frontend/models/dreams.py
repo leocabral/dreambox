@@ -13,6 +13,7 @@ class Dreams(ndb.Model):
 	date = ndb.DateTimeProperty(auto_now_add=True)
 	dreamer = ndb.IntegerProperty()
 	tags = ndb.JsonProperty()
+	followers = ndb.JsonProperty()
 
 	@classmethod
 	def find_all(cls):
@@ -40,7 +41,19 @@ class Dreams(ndb.Model):
 		dream.name = dream_new.name
 		dream.description = dream_new.description
 		dream.tags = dream_new.tags
+
 		return dream.put().get()
+
+	@classmethod
+	def add_follower(cls, _id, helper):
+		dream = Dreams.find(_id)
+
+		if not dream.followers:
+			dream.followers = []
+
+		dream.followers.append(helper)
+
+		dream.put()
 
 
 class DreamsAPI(webapp2.RequestHandler):
@@ -88,3 +101,6 @@ class DreamsAPI(webapp2.RequestHandler):
 
 	def delete(self, dream_id):
 		Dreams.find(int(dream_id)).key.delete()
+
+	def add_follower(self, dream_id):
+		Dreams.add_follower(int(dream_id), int(self.request.get('helper')))

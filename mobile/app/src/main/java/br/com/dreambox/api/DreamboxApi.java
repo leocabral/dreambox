@@ -38,7 +38,7 @@ public class DreamboxApi {
                       @Field("description") String description, @Field("dreamer") long dreamer, Callback<JsonObject> response);
 
         @GET("/api/dreams/random")
-        void getRandomDream(Callback<JsonArray> response);
+        void getRandomDream(Callback<JsonObject> response);
 
         @GET("/api/dreams/search/{term}")
         void getSearchDream(@Path("term") String term, Callback<JsonArray> response);

@@ -15,16 +15,25 @@ import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.quinny898.library.persistentsearch.SearchBox;
 import com.quinny898.library.persistentsearch.SearchBox.SearchListener;
 import com.quinny898.library.persistentsearch.SearchResult;
 
+import org.json.JSONObject;
+
 import br.com.dreambox.R;
+import br.com.dreambox.api.DreamboxApi;
 import br.com.dreambox.listener.OnSwipeTouchListener;
+import br.com.dreambox.model.Dream;
 import br.com.dreambox.util.ViewUtils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
@@ -168,6 +177,21 @@ public class MainActivity extends AppCompatActivity {
     protected void cloudClicked() {
         if (currentDream == null) {
             currentDream = LayoutInflater.from(this).inflate(R.layout.card_dream_detail, null, false);
+
+            DreamboxApi.get().getRandomDream(new Callback<JsonObject>() {
+                @Override
+                public void success(JsonObject jsonObject, Response response) {
+                    Toast.makeText(MainActivity.this, jsonObject.toString(), Toast.LENGTH_SHORT).show();
+                    Dream dream = new Dream();
+                    dream = dream.fromJson(jsonObject);
+                    //TODO load info into currentDream
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+
+                }
+            });
             mDreamCardContainer.addView(currentDream);
 
             DisplayMetrics displayMetrics = ViewUtils.getDisplayMetrics(this);

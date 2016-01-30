@@ -1,5 +1,7 @@
 package br.com.dreambox.model;
 
+import com.google.gson.JsonObject;
+
 import java.util.Date;
 
 public class Dream {
@@ -13,6 +15,10 @@ public class Dream {
     public Dream(String title, String description) {
         this.title = title;
         this.description = description;
+    }
+
+    public Dream() {
+
     }
 
     public String getTitle() {
@@ -53,5 +59,11 @@ public class Dream {
 
     public void setRealized(Boolean realized) {
         this.realized = realized;
+    }
+
+    public Dream fromJson(JsonObject jsonObject) {
+
+
+        return null;
     }
 }
