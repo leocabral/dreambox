@@ -95,12 +95,12 @@ img {
 .search {
 	position: absolute;
 }
-.clouds {
-	
-}
-.grass {
-	
-}
-.character {
-	
+.opened-dream {
+    position: relative;
+    z-index: 1;
+    font-size: 4px;
+    margin: 0 auto;
+    width: 50%;
+    height: 78%;
+    /* border: 1px solid black; */
 }
