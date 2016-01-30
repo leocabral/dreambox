@@ -22,7 +22,7 @@ class Dreams(ndb.Model):
 
 
 class DreamsAPI(webapp2.RequestHandler):
-    def get(self):
+    def list(self):
         self.response.out.write(ndb_json.dumps(Dreams.find_all()))
 
     def post(self):
@@ -30,7 +30,6 @@ class DreamsAPI(webapp2.RequestHandler):
 
         self.response.out.write(ndb_json.dumps(dream.put().get()))
 
-class DreamAPI(webapp2.RequestHandler):
     def get(self, dream_id):
         self.response.out.write(ndb_json.dumps(Dreams.find(int(dream_id))))
 
