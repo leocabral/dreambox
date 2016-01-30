@@ -336,6 +336,7 @@ $('img.robot').unbind('click').click(function(e) {
 
 $(document).on('click',function() {
     $('.thinking').fadeOut();
+    $('.active-cloud').removeClass('active-cloud').html('');
 });
 
 var clouds = 0;
@@ -370,12 +371,13 @@ buildCreator(800);
 buildCreator(1000);
 buildCreator(1200);
 
-$('#clouds').on('click', '> div', function() {
+$('#clouds').on('click', '> div', function(e) {
 	$(this).addClass('active-cloud');
 	$(this).html(
 			  '<div class="opened-dream">'
 			 + '<img src="avatar.png" class="dreamer-avatar" />'
-			 + '<span class="dream-title">Title</span>'
+			 + '<div class="dream-title">Title</div>'
 			 + 'Sempre sonhei em ser HU3HU3BR'
 			+ '</div>');
+    e.stopPropagation();
 });
