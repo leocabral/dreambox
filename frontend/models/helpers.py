@@ -2,6 +2,7 @@ import json
 import cgi
 import webapp2
 import hashlib
+import logging
 
 from google.appengine.ext import ndb
 from google.appengine.ext import db
@@ -72,7 +73,8 @@ class HelpersAPI(webapp2.RequestHandler):
 		self.response.headers['Content-Type'] = 'application/json'
 		self.response.out.write(ndb_json.dumps(Helpers.find(int(helper_id))))
 
-	def login(self):
+	def authenticate(self):
+		logging.info('Trying to authenticate')
 		self.response.headers['Content-Type'] = 'application/json'
 		helper = Helpers.find_by_email_and_password(self.request.get('email'), hashlib.sha224(self.request.get('password')).hexdigest())
 		# TODO: nao deve retornar a senha

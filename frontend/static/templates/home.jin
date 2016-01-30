@@ -1,6 +1,9 @@
 {% extends "base.jin" %}
 
 {% block content %}
+    <div class="admin">
+        <a href="/admin">Administração</a>
+    </div>
 	<div class="search">
 		<input type="text" />
         <button type="button"><img src="/img/search.png"></button>

@@ -1,4 +1,4 @@
-var dreamBox = angular.module('dream-box', [], function($httpProvider) {
+var dreamBox = angular.module('dream-box', [], ['$httpProvider', function($httpProvider) {
   // Use x-www-form-urlencoded Content-Type
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
  
@@ -42,4 +42,4 @@ var dreamBox = angular.module('dream-box', [], function($httpProvider) {
   $httpProvider.defaults.transformRequest = [function(data) {
     return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
   }];
-});
+}]);

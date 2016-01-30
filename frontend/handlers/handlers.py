@@ -15,8 +15,11 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
 
-        def home(self):
-		MainPage.get(self, 'sample.jin')
+	def home(self):
+		MainPage.get(self, 'home.jin')
+
+	def admin(self):
+		MainPage.get(self, 'admin.jin')
 
 	def get(self, page):
 		template = JINJA_ENVIRONMENT.get_template(page)

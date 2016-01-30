@@ -1,0 +1,35 @@
+{% autoescape true %}
+<html ng-app="dream-box-admin">
+	<head>
+		<!-- you may add some css here -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+		<script src="/js/admin-module.js"></script>
+		<script src="/js/controllers/admin-signin-controller.js"></script>
+		<script src="/js/controllers/admin-user-controller.js"></script>
+	</head>
+	<body>
+		<div ng-controller="SigninController as sigin" ng-hide="sigin.isLogged()">
+			<form name="form" ng-submit="sigin.login()" novalidate>
+				<h2>Login</h2>
+				<div>
+	            	<label>Email:</label>
+	            	<input type="text" ng-model="sigin.credentials.email" required />
+		        </div>
+		        <div>
+		            <label for="password">Senha:</label>
+		            <input type="password" ng-model="sigin.credentials.password" required />
+		        </div>
+		        <div>
+		            <button type="submit" ng-disabled="form.$invalid">Login</button>
+		        </div>
+	        </form>
+		</div>
+		<div ng-controller="AdminUserController as user" ng-show="user.isLogged()">
+			<span>{[{ user.getEmail() }]}</span>
+			<button ng-click="user.logout()">Logout</buttom>
+		</div>
+	</body>
+</html>
+{% endautoescape %}

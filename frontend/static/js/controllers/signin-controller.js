@@ -6,7 +6,7 @@ angular.module('dream-box').controller('SigninController', ['$scope', '$http', f
 	};
 
 	vm.login = function() {
-		$http.post('/api/helpers/login', vm.credentials).then(function(response){
+		$http.post('/api/helpers/authenticate', vm.credentials).then(function(response){
 			Helper.login(response);
 			Cloud.cleanActive();
 		}, function(response){
