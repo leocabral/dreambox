@@ -1,5 +1,7 @@
 package br.com.dreambox.activity;
 
+import android.graphics.drawable.Icon;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,6 +33,10 @@ public class DreamDetail extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Seguindo esse sonho !!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                    fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_heart, getApplicationContext().getTheme()));
+
             }
         });
     }
