@@ -44,6 +44,7 @@ class Dreams(ndb.Model):
 
 class DreamsAPI(webapp2.RequestHandler):
     def list(self):
+	self.response.headers['Content-Type'] = 'application/json'
         return webapp2.Response(ndb_json.dumps(Dreams.find_all()))
 
     def post(self):
@@ -70,7 +71,9 @@ class DreamsAPI(webapp2.RequestHandler):
         return webapp2.Response(ndb_json.dumps(Dreams.of(int(dreamer_id))))
 
     def random(self):
-        return webapp2.Response(ndb_json.dumps(Dreams.random()))
+	self.response.headers['Content-Type'] = 'application/json'
+
+        self.response.out.write(ndb_json.dumps(Dreams.random()))
 
     def put(self, dream_id):
         return webapp2.Response(ndb_json.dumps(Dreams.update(int(dream_id), Dreams(name = self.request.get('name'), description = self.request.get('description')))))
