@@ -1,22 +1,26 @@
 package br.com.dreambox.model;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 
+@Parcel
 public class Dreamer {
 
+    long code;
+    String name;
+    Integer age;
+    String city;
+    String state;
+    String foundation;
+    Date birthday;
+    String lastName;
+    String nickname;
+    String password;
+    String email;
 
-    private long code;
-    private String name;
-    private Integer age;
-    private String city;
-    private String state;
-    private String foundation;
-    private Date birthday;
-    private String lastName;
-    private String nickname;
-    private String password;
-    private String email;
-
+    public Dreamer() {
+    }
 
     public String getName() {
         return name;
