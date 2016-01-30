@@ -16,16 +16,14 @@
             android:theme="@style/HomeTheme" >
 
         </activity>
-        <activity android:name=".activity.HomeActivity" >
-            android:theme="@style/HomeTheme">
+        <activity android:name=".activity.DreamActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.DreamActivity" >
+        <activity android:name=".activity.HomeActivity" >
         </activity>
-
         <activity android:name=".activity.SignUpActivity" />
         <activity
             android:name=".activity.ProfileActivity"

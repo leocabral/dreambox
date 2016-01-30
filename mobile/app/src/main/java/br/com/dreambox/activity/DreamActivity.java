@@ -1,24 +1,30 @@
 package br.com.dreambox.activity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.dreambox.R;
+import br.com.dreambox.api.DreamboxApi;
+import br.com.dreambox.model.Dream;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import co.lujun.androidtagview.TagContainerLayout;
 import co.lujun.androidtagview.TagView;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class DreamActivity extends AppCompatActivity {
 
@@ -30,6 +36,12 @@ public class DreamActivity extends AppCompatActivity {
 
     @Bind(R.id.dream_add_tag)
     public Button btnAddTag;
+
+    @Bind(R.id.dream_title)
+    public TextView dreamTitle;
+
+    @Bind(R.id.dream_description)
+    public TextView dreamDescription;
 
     public List<String> listTag = new ArrayList<String>();
 
@@ -44,7 +56,21 @@ public class DreamActivity extends AppCompatActivity {
 
     @OnClick(R.id.create_dream_button)
     protected void createDream() {
-        startActivity(new Intent(this, ProfileActivity.class));
+        Dream dream = new Dream(dreamTitle.getText().toString(), dreamDescription.getText().toString());
+
+        DreamboxApi.get().addDream(dream.getTitle(), dream.getDescription(), 5639445604728832L,
+                new Callback<JsonObject>() {
+                    @Override
+                    public void success(JsonObject jsonObject, Response response) {
+                        Toast.makeText(DreamActivity.this, "Sonho criado com sucesso", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Toast.makeText(DreamActivity.this, "Erro, tente novamente", Toast.LENGTH_SHORT).show();
+                    }
+        });
+//        startActivity(new Intent(this, ProfileActivity.class));
     }
 
     @OnClick(R.id.dream_add_tag)
