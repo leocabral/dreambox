@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:scrolling_image_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/blue_sky"
     tools:context=".activity.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent" />
+    <com.quinny898.library.persistentsearch.SearchBox
+        android:id="@+id/search_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-</RelativeLayout>
+    <com.q42.android.scrollingimageview.ScrollingImageView
+        android:id="@+id/scrolling_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_box"
+        android:layout_marginTop="10dp"
+        scrolling_image_view:speed="1dp"
+        scrolling_image_view:src="@drawable/cloud" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:scaleType="fitEnd"
+        android:src="@drawable/robot"
+        app:layout_heightPercent="25%"
+        app:layout_widthPercent="25%" />
+</android.support.percent.PercentRelativeLayout>
