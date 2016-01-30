@@ -12,7 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <include layout="@layout/clouds_layout" />
+    <include
+        layout="@layout/clouds_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_box"
+        android:layout_marginTop="10dp" />
 
     <ImageView
         android:layout_width="match_parent"

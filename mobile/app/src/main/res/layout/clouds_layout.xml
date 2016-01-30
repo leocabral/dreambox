@@ -3,9 +3,7 @@
     xmlns:scrolling_image_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/clouds"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/search_box"
-    android:layout_marginTop="10dp">
+    android:layout_height="wrap_content">
 
     <com.q42.android.scrollingimageview.ScrollingImageView
         android:layout_width="match_parent"
