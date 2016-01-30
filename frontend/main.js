@@ -371,11 +371,16 @@ buildCreator(1000);
 buildCreator(1200);
 
 $('#clouds').on('click', '> div', function() {
-	$(this).addClass('active-cloud');
-	$(this).html(
-			  '<div class="opened-dream">'
-			 + '<img src="avatar.png" class="dreamer-avatar" />'
-			 + '<div class="dream-title">Title</div>'
-			 + 'Sempre sonhei em ser HU3HU3BR'
-			+ '</div>');
+	var dream = {
+			'avatar' : 'avatar.png',
+			'title' : 'Dream title',
+			'description' : 'Sempre sonhei em ser HU3HU3HU3HU3BRBR'
+	};
+	var cloud = $(this);
+//	$.getJSON('/api/blah').done(function(dream) {
+		$.get('/template/opened-dream.html').done(function(template) {
+			cloud.addClass('active-cloud');
+			cloud.html(doT.template(template)(dream));
+		});
+//	});
 });
