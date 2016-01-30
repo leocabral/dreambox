@@ -294,3 +294,11 @@ background-color: #fff;
 	display: flex;
 	position: relative;
 }
+
+
+.dream-error {
+	font-size: 3em;
+    width: 500px;
+    left: -65%;
+    position: relative;	
+}
