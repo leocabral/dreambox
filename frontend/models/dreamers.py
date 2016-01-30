@@ -18,6 +18,10 @@ class Dreamers(ndb.Model):
     def find_all(cls):
         return Dreamers.query()
 
+    @classmethod
+    def find(csl, _id):
+        return Dreamers.get_by_id(_id)
+
 
 class DreamersAPI(webapp2.RequestHandler):
     def get(self):
@@ -32,3 +36,6 @@ class DreamersAPI(webapp2.RequestHandler):
 
         self.response.out.write(ndb_json.dumps(dreamer.put().get()))
 
+class DreamerAPI(webapp2.RequestHandler):
+    def get(self, dreamer_id):
+        self.response.out.write(ndb_json.dumps(Dreamers.find(int(dreamer_id))))
