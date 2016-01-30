@@ -13,6 +13,8 @@ body {
 canvas {
 	position: absolute;
 	top: 0;
+	height: 100vh;
+	width: 100vw;
 }
 
 img {
@@ -40,6 +42,21 @@ img {
 	-webkit-border-radius: 200px;
 	
 	position: absolute; 
+	transition: transform 1s linear, top 1s linear, opacity 1s linear;
+}
+
+.cloud.active-cloud {
+	top: 410px !important;
+	left: calc(50vw - 110px) !important;
+	opacity: 1 !important;
+	-webkit-transform: scale(5) !important;
+	-moz-transform: scale(5) !important;
+	transform:scale(5) !important;
+	opacity : 1;
+	-webkit-animation: initial !important;
+	moz-animation:initial !important;
+	-o-animation:initial !important;
+	
 }
 
 .cloud:before, .cloud:after {
