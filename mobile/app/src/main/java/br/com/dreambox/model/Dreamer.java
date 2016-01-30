@@ -1,5 +1,7 @@
 package br.com.dreambox.model;
 
+import java.util.Date;
+
 public class Dreamer {
 
     private String name;
@@ -7,7 +9,7 @@ public class Dreamer {
     private String city;
     private String state;
     private String foundation;
-    private String birthday;
+    private Date birthday;
     private String lastName;
     private String nickname;
     private String password;
@@ -62,11 +64,11 @@ public class Dreamer {
         this.foundation = foundation;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
