@@ -375,7 +375,7 @@ $('#clouds').on('click', '> div', function() {
 	$(this).html(
 			  '<div class="opened-dream">'
 			 + '<img src="avatar.png" class="dreamer-avatar" />'
-			 + '<span class="dream-title">Title</span>'
+			 + '<div class="dream-title">Title</div>'
 			 + 'Sempre sonhei em ser HU3HU3BR'
 			+ '</div>');
 });
