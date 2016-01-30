@@ -17,12 +17,9 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activity.DreamActivity"
-            android:label="@string/title_activity_dream" />
-        <activity
-            android:name=".activity.SignUpActivity"
-            android:label="@string/title_activity_sign_up" />
+        <activity android:name=".activity.DreamActivity" />
+        <activity android:name=".activity.HomeActivity" />
+        <activity android:name=".activity.SignUpActivity" />
     </application>
 
 </manifest>
