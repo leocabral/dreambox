@@ -27,6 +27,17 @@ class Dreamers(ndb.Model):
 	def find(csl, _id):
 		return Dreamers.get_by_id(_id)
 
+	@classmethod
+	def update(cls, _id, dreamer_new):
+		dreamer = Dreamers.find(_id)
+		dreamer.name = dreamer_new.name
+		dreamer.last_name = dreamer_new.last_name
+		dreamer.birthday = dreamer_new.birthday
+		dreamer.nickname = dreamer_new.nickname
+		dreamer.organization = dreamer_new.organization
+
+		return dreamer.put().get()
+
 
 class DreamersAPI(webapp2.RequestHandler):
 	def list(self):
@@ -50,6 +61,28 @@ class DreamersAPI(webapp2.RequestHandler):
 		self.response.headers['Content-Type'] = 'application/json'
 		self.response.out.write(ndb_json.dumps(dreamer.put().get()))
 
+	def mantain(self, dreamer_id):
+		if self.request.method == 'GET':
+			return DreamersAPI.get(self, dreamer_id)
+		if self.request.method == 'DELETE':
+			return DreamersAPI.delete(self, dreamer_id)
+		if self.request.method == 'PUT':
+			return DreamersAPI.put(self, dreamer_id)
+
 	def get(self, dreamer_id):
 		self.response.headers['Content-Type'] = 'application/json'
 		self.response.out.write(ndb_json.dumps(Dreamers.find(int(dreamer_id))))
+
+	def put(self, dreamer_id):
+		birthday = None
+		if self.request.get('birthday') != None :
+			birthday = parse(self.request.get('birthday'))
+		Dreamers.update(int(dreamer_id), Dreams(
+			name = self.request.get('name'), 
+			last_name = self.request.get('last_name'), 
+			birthday = birthday,
+			nickname = self.request.get('nickname'),
+			organization = self.request.get('organization')))
+
+	def delete(self, dreamer_id):
+		Dreamers.find(int(dreamer_id)).key.delete()

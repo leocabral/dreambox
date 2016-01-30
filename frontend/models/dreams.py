@@ -1,11 +1,10 @@
 import json
 import random
+import webapp2
 
 from google.appengine.ext import ndb
 from google.appengine.ext import db
-
 from lib import ndb_json
-import webapp2
 
 class Dreams(ndb.Model):
 	name = ndb.StringProperty()
