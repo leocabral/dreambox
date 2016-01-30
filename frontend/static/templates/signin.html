@@ -1,7 +1,7 @@
 <div class="opened-dream" ng-controller="SigninController as signin">
-	<form>
-		<label>Usuário:</label><input type="text" name="username" />
-		<label>Senha:</label><input type="password" name="password" />
-		<input type="submit" value="Enivar" />
+	<form name="signinForm" novalidate ng-submit="signin.login()">
+		<label>Usuário:</label><input type="text" required ng-model="signin.credentials.username" />
+		<label>Senha:</label><input type="password" required ng-model="signin.credentials.password" />
+		<input type="submit" value="Enivar" ng-disabled="!signinForm.$valid" />
 	</form>
 </div>
