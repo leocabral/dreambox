@@ -34,6 +34,7 @@ img {
 
 /*Time to finalise the cloud shape*/
 .cloud {
+    margin-left: 0;
 	width: 200px; height: 60px;
 	background: #fff;
 	

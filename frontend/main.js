@@ -346,7 +346,7 @@ var createCloud = function () {
 		'transform' : 'scale(' + scale + ')',
 		'opacity' : scale,
 		'-webkit-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
-		'moz-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
+		'-moz-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
 		'-o-animation' : 'moveclouds ' + moveSpeed + 's linear infinite'
 	});
 	
