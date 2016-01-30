@@ -1,15 +1,21 @@
 package br.com.dreambox.model;
 
+import com.google.gson.JsonObject;
+
 import org.parceler.Parcel;
 
 import java.util.Date;
+
+import br.com.dreambox.api.DreamboxApi;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 @Parcel
 public class Dreamer {
 
     long code;
     String name;
-    Integer age;
     String city;
     String state;
     String foundation;
@@ -36,14 +42,6 @@ public class Dreamer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     public String getCity() {
@@ -100,6 +98,25 @@ public class Dreamer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void nameFromJson(long dreamer) {
+        DreamboxApi.get().getDreamer(dreamer, new Callback<JsonObject>() {
+            @Override
+            public void success(JsonObject jsonObject, Response response) {
+                String n = jsonObject.get("name").getAsString(); //+ " " + jsonObject.get("last_name").getAsString();
+                nameLess(n);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                System.out.println("Deu erro de get dentro da classe Dreamer");
+            }
+        });
+    }
+
+    private void nameLess(String n) {
+        this.name = n;
     }
 
     public long getCode() {

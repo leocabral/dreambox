@@ -3,6 +3,7 @@
 {% block content %}
 	<div class="search">
 		<input type="text" />
+        <button type="button"><img src="/img/search.png"></button>
 	</div>
 	<div id="clouds">
         <div class="cloud" id="new-cloud">
@@ -37,11 +38,35 @@
             <div class="second-ball">
             </div>
         </div>
+        <div class="cloud x2 with-hover" id="sign-in">
+            <div class="opened-dream normal-font">
+                Entrar
+            </div>
+            <div class="first-ball">
+            </div>
+            <div class="second-ball">
+            </div>
+        </div>
+        <div class="cloud x3 with-hover"  id="sign-up">
+            <div class="opened-dream normal-font">
+                Cadastrar
+            </div>
+            <div class="first-ball">
+            </div>
+            <div class="second-ball">
+            </div>
+        </div>
     </div>
 {% endblock %}
 
 {% block initPage %}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="js/doT.min.js"></script>
+	<script src="js/grass.js"></script>
+	<script src="js/user.js"></script>
+	<script src="js/dream.js"></script>
+	<script src="js/cloud.js"></script>
 	<script src="js/main.js"></script>
+    <script src="js/controllers/signup-controller.js"></script>
+    <script src="js/controllers/signin-controller.js"></script>
 {% endblock %}

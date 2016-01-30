@@ -1,0 +1,1 @@
+var dreamBox = angular.module('dream-box', []);
