@@ -1,5 +1,17 @@
 package br.com.dreambox.model;
 
+import android.app.Application;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.gson.JsonObject;
+
+import java.math.BigInteger;
+
+import br.com.dreambox.api.DreamboxApi;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import java.util.Date;
 
 public class Dreamer {
@@ -96,6 +108,25 @@ public class Dreamer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void nameFromJson(long dreamer) {
+        DreamboxApi.get().getDreamer(dreamer, new Callback<JsonObject>() {
+            @Override
+            public void success(JsonObject jsonObject, Response response) {
+                String n = jsonObject.get("name").getAsString(); //+ " " + jsonObject.get("last_name").getAsString();
+                nameLess(n);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                System.out.println("DEu erro de get dentro da classe Dreamer");
+            }
+        });
+    }
+
+    private void nameLess(String n) {
+        this.name = n;
     }
 
     public long getCode() {
