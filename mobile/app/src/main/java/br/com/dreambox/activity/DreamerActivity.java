@@ -87,7 +87,7 @@ public class DreamerActivity extends AppCompatActivity implements DatePickerDial
                     }
                 });
 
-        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     @OnClick(R.id.dreamer_birthday)

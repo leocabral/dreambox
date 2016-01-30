@@ -6,7 +6,6 @@ from google.appengine.ext import ndb
 
 import jinja2
 import webapp2
-from models.models import *
 
 JINJA_ENVIRONMENT = jinja2.Environment(
 	loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), os.pardir, os.path.dirname('static/templates/'))),
