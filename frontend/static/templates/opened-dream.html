@@ -1,12 +1,12 @@
 <div class="opened-dream">
-	<img src="{{=it.avatar}}" class="dreamer-avatar" />
-	<div class="dream-title">{{=it.name}}</div>
-	{{=it.description}}
+	<img src="{{=it.dream.avatar}}" class="dreamer-avatar" />
+	<div class="dream-title">{{=it.dream.name}}</div>
+	{{=it.dream.description}}
 	<div class="buttons">
-		<input type="button" class="confirmation-button follow" data-id={{=it.id}} value = "<3"/>
+		<input type="button" class="confirmation-button follow" data-id={{=it.dream.id}} value = "<3"/>
 		<ul class="share-buttons">
   			<li>
-  				<a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:8181/?id={{=it.id}}&t=DreamBox" title="Share on Facebook" target="_blank"><img src="/img/Facebook.svg"></a>
+  				<a href="https://www.facebook.com/sharer/sharer.php?u={{it.origin}}?id={{=it.dream.id}}&t=DreamBox" title="Share on Facebook" target="_blank"><img src="/img/Facebook.svg"></a>
  			</li>
 		</ul>
 	</div>
