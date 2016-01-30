@@ -1,4 +1,4 @@
-package br.com.dreambox.activity;
+package br.com.dreambox.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,12 +15,12 @@ import br.com.dreambox.model.Dream;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class DreamsAdapter extends RecyclerView.Adapter<DreamsAdapter.DreamViewHolder> {
+public class DreamAdapter extends RecyclerView.Adapter<DreamAdapter.DreamViewHolder> {
 
     private List<Dream> mDreams;
     private OnDreamClickListener mDreamOnClickListener;
 
-    public DreamsAdapter(OnDreamClickListener dreamClick) {
+    public DreamAdapter(OnDreamClickListener dreamClick) {
         mDreamOnClickListener = dreamClick;
     }
 
