@@ -8,17 +8,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import br.com.dreambox.R;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DreamDetail extends AppCompatActivity {
+
+    @Bind(R.id.follow)
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dream_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        ButterKnife.bind(this);
+        setUpFloatingActionButton();
+    }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+    private void setUpFloatingActionButton() {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,5 +34,4 @@ public class DreamDetail extends AppCompatActivity {
             }
         });
     }
-
 }
