@@ -36,23 +36,32 @@ class Dreams(ndb.Model):
 
     @classmethod
     def update(cls, _id, dream_new):
-        dream = find(cls, _id)
+        dream = Dreams.find(_id)
         dream.name = dream_new.name
         dream.description = dream_new.description
-        return dream
+        return dream.put().get()
 
 
 class DreamsAPI(webapp2.RequestHandler):
     def list(self):
-        return webapp2.Rresponse.out.write(ndb_json.dumps(Dreams.find_all()))
+        return webapp2.Response(ndb_json.dumps(Dreams.find_all()))
 
     def post(self):
         dream = Dreams(name = self.request.get('name'), description = self.request.get('description'), dreamer = int(self.request.get('dreamer')))
 
-        return webapp2.Response.out.write(ndb_json.dumps(dream.put().get()))
+        return webapp2.Response(ndb_json.dumps(dream.put().get()))
+
+    def mantain(self, dream_id):
+        if self.request.method == 'GET':
+            return DreamsAPI.get(self, dream_id)
+        if self.request.method == 'DELETE':
+            return DreamsAPI.delete(self, dream_id)
+        if self.request.method == 'PUT':
+            return DreamsAPI.put(self, dream_id)
+
 
     def get(self, dream_id):
-        return webapp2.RelfResponse(ndb_json.dumps(Dreams.find(int(dream_id))))
+        return webapp2.Response(ndb_json.dumps(Dreams.find(int(dream_id))))
 
     def search(self, term):
         return webapp2.Response(ndb_json.dumps(Dreams.search_by_name(term)))
@@ -64,4 +73,7 @@ class DreamsAPI(webapp2.RequestHandler):
         return webapp2.Response(ndb_json.dumps(Dreams.random()))
 
     def put(self, dream_id):
-        return webapp2.Response(ndb_json.dumps(Dreams.update(dream_id, Dreams(name = self.request.get('name'), description = self.request.get('description')))))
+        return webapp2.Response(ndb_json.dumps(Dreams.update(int(dream_id), Dreams(name = self.request.get('name'), description = self.request.get('description')))))
+
+    def delete(self, dream_id):
+        Dreams.find(int(dream_id)).key.delete()
