@@ -1,5 +1,7 @@
 package br.com.dreambox.api;
 
+import android.telecom.Call;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -33,11 +35,11 @@ public class DreamboxApi {
         void addDream(@Field("name") String title,
                       @Field("description") String description, @Field("dreamer") long dreamer, Callback<JsonObject> response);
 
-        @PUT("/api/dreams/{dreamId}")
-        @FormUrlEncoded
-        void updateDream(@Path("dreamId") int dreamId, @Field("name") String title,
-                         @Field("description") String description,
-                         Callback<JsonObject> response);
+        @GET("/api/dreams/random")
+        void getRandomDream(Callback<JsonArray> response);
+
+        @GET("/api/dreams/search/{term}")
+        void getSearchDream(@Path("term") String term, Callback<JsonArray> response);
 
         @GET("/api/dreamers")
         void dreamers(Callback<JsonArray> response);
@@ -45,16 +47,18 @@ public class DreamboxApi {
         @GET("/api/dreamers/{dreamerId}")
         void getDreamer(@Path("dreamerId") int dreamerId, Callback<JsonObject> response);
 
+        @GET("/api/dreams/of/{dreamerId}")
+        void getDreamOf(@Path("dreamerId") int dreamerId, Callback<JsonArray> response);
+
         @POST("/api/dreamers")
         @FormUrlEncoded
-        void addDreamer(@Field("name") String title, @Field("lastName") String lastName,
+        void addDreamer(@Field("name") String title, @Field("last_name") String lastName,
                         @Field("birthday") String birthday, @Field("nickname") String nickname,
                         @Field("password") String password, @Field("email") String email,
                         @Field("organization") String organization, Callback<JsonObject> response);
 
-        @PUT("/api/dreamers")
-        @FormUrlEncoded
-        void updateDreamer(Callback<JsonObject> response);
+
+
 
     }
 
