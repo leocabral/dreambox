@@ -11,6 +11,7 @@ class Dreams(ndb.Model):
     name = ndb.StringProperty(indexed=True)
     description = ndb.StringProperty()
     date = ndb.DateTimeProperty(auto_now_add=True)
+    dreamer = ndb.IntegerProperty()
 
     @classmethod
     def find_all(cls):
@@ -19,6 +20,10 @@ class Dreams(ndb.Model):
     @classmethod
     def find(csl, _id):
         return Dreams.get_by_id(_id)
+
+    @classmethod
+    def search_by_name(cls, term):
+        return Dreams.query(ndb.AND(Dreams.name >= term, Dreams.name <= term + u'\ufffd'))
 
 
 class DreamsAPI(webapp2.RequestHandler):
@@ -33,3 +38,5 @@ class DreamsAPI(webapp2.RequestHandler):
     def get(self, dream_id):
         self.response.out.write(ndb_json.dumps(Dreams.find(int(dream_id))))
 
+    def search(self, term):
+        self.response.out.write(ndb_json.dumps(Dreams.search_by_name(term)))
