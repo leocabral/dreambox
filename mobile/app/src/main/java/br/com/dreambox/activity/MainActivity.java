@@ -2,12 +2,12 @@ package br.com.dreambox.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import com.quinny898.library.persistentsearch.SearchBox;
 import com.quinny898.library.persistentsearch.SearchBox.SearchListener;
 import com.quinny898.library.persistentsearch.SearchResult;
-import android.view.View;
 
 import br.com.dreambox.R;
 import butterknife.Bind;
@@ -16,8 +16,11 @@ import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String HOME_SHOWCASE = "homeShowcase";
+    
     @Bind(R.id.search_box)
-    public SearchBox search;
+    SearchBox search;
 
     @Bind(R.id.target_clouds_tutorial)
     View mClouds;
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         ShowcaseConfig config = new ShowcaseConfig();
         config.setDelay(500);
 
-        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this);
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, HOME_SHOWCASE);
         sequence.setConfig(config);
 
         String gotIt = getString(R.string.got_it);
