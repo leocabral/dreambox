@@ -8,7 +8,7 @@ from lib import ndb_json
 import webapp2
 
 class Dreams(ndb.Model):
-    name = ndb.StringProperty(indexed=True)
+    name = ndb.StringProperty()
     name_search = ndb.ComputedProperty(lambda self: self.name.lower())
     description = ndb.StringProperty()
     date = ndb.DateTimeProperty(auto_now_add=True)
