@@ -34,24 +34,34 @@ class Dreams(ndb.Model):
     def random(cls):
         return random.sample(Dreams.query().fetch(keys_only=True), 1)[0].get()
 
+    @classmethod
+    def update(cls, _id, dream_new):
+        dream = find(cls, _id)
+        dream.name = dream_new.name
+        dream.description = dream_new.description
+        return dream
+
 
 class DreamsAPI(webapp2.RequestHandler):
     def list(self):
-        self.response.out.write(ndb_json.dumps(Dreams.find_all()))
+        return webapp2.Rresponse.out.write(ndb_json.dumps(Dreams.find_all()))
 
     def post(self):
         dream = Dreams(name = self.request.get('name'), description = self.request.get('description'), dreamer = int(self.request.get('dreamer')))
 
-        self.response.out.write(ndb_json.dumps(dream.put().get()))
+        return webapp2.Response.out.write(ndb_json.dumps(dream.put().get()))
 
     def get(self, dream_id):
-        self.response.out.write(ndb_json.dumps(Dreams.find(int(dream_id))))
+        return webapp2.RelfResponse(ndb_json.dumps(Dreams.find(int(dream_id))))
 
     def search(self, term):
-        self.response.out.write(ndb_json.dumps(Dreams.search_by_name(term)))
+        return webapp2.Response(ndb_json.dumps(Dreams.search_by_name(term)))
 
     def list_by_dreamer(self, dreamer_id):
-        self.response.out.write(ndb_json.dumps(Dreams.of(int(dreamer_id))))
+        return webapp2.Response(ndb_json.dumps(Dreams.of(int(dreamer_id))))
 
     def random(self):
-        self.response.out.write(ndb_json.dumps(Dreams.random()))
+        return webapp2.Response(ndb_json.dumps(Dreams.random()))
+
+    def put(self, dream_id):
+        return webapp2.Response(ndb_json.dumps(Dreams.update(dream_id, Dreams(name = self.request.get('name'), description = self.request.get('description')))))
