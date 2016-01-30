@@ -9,15 +9,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
+
 import org.parceler.Parcels;
 
 import java.text.SimpleDateFormat;
 
 import br.com.dreambox.R;
+import br.com.dreambox.api.DreamboxApi;
 import br.com.dreambox.model.Dream;
 import br.com.dreambox.model.Dreamer;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -74,8 +80,20 @@ public class EditProfileActivity extends AppCompatActivity {
         });
     }
 
-    private void updateDreamer(Dreamer dreamerFromFields) {
+    private void updateDreamer(Dreamer dreamer) {
+        DreamboxApi.get().putDreamer(dreamer.getCode(), dreamer.getName(), dreamer.getLastName(),
+                dreamer.getNickname(), dreamer.getEmail(), dreamer.getFoundation(), new Callback<JsonObject>() {
 
+            @Override
+            public void success(JsonObject jsonObject, Response response) {
+                Toast.makeText(getBaseContext(), "Sonhador atualizado!", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(getBaseContext(), "Sonhador não atualizado!", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private Dreamer getDreamerFromFields() {
