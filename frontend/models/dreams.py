@@ -4,7 +4,7 @@ import cgi
 from google.appengine.ext import ndb
 from google.appengine.ext import db
 
-
+from lib import ndb_json
 import webapp2
 
 class Dreams(ndb.Model):
@@ -19,11 +19,10 @@ class Dreams(ndb.Model):
 
 class DreamsAPI(webapp2.RequestHandler):
     def get(self):
-	dreams = [dict(dream.to_dict(), **dict(id=dream.key.id())) for dream in Dreams.query()]
-        self.response.out.write(dreams)
+        self.response.out.write(ndb_json.dumps(Dreams.find_all()))
 
     def post(self):
         dream = Dreams(name = self.request.get('name'), description = self.request.get('description'))
 
-        self.response.out.write(dream.put().get().to_dict())
+        self.response.out.write(ndb_json.dumps(dream.put().get()))
 
