@@ -49,18 +49,8 @@ var Cloud = (function() {
 				cloud.addClass('active-cloud');
 				cloud.html(html);
 
-				$('.follow').unbind('click').click(function() {
-					var button = $(this);
-					var id = button.data('id');
-//					$.ajax({
-//						method: 'PUT',
-//						url: 'some.php',
-//						data: { 'id' : id }
-//					}).done(function() {
-					    button.prop('disabled', true);
-//			        });
-				});
 				$('#clouds').unbind("click");				
+				Cloud.bindFollow();
 			});
 		},
 
@@ -71,6 +61,19 @@ var Cloud = (function() {
 					Cloud.open(cloud, dream);
 				});
 			    e.stopPropagation();
+			});
+		},
+
+		'bindFollow' : function() {
+			$('.follow').unbind('click').click(function() {
+				var button = $(this);
+				var id = button.data('id');
+				$.ajax({
+					type: 'PUT',
+					url: 'api/dreams/' + id + '/add_follower?helper=' + Helper.id()
+				}).done(function() {
+				    button.prop('disabled', true);
+		        });
 			});
 		}
 	};

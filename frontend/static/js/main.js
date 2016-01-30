@@ -3,10 +3,6 @@ $('img.robot').unbind('click').click(function(e) {
     e.stopPropagation();
 });
 
-Cloud.buildCreator(800);
-Cloud.buildCreator(1000);
-Cloud.buildCreator(1200);
-
 $('#novo-sonho').unbind('click').click(function(e) {
     $('#new-cloud').addClass('active-cloud');
     e.stopPropagation();
@@ -19,6 +15,10 @@ $('#new-cloud').unbind('click').click(function(e) {
 $('#meu-perfil').unbind('click').click(function(e) {
     e.stopPropagation();
 });
+
+Cloud.buildCreator(800);
+Cloud.buildCreator(1000);
+Cloud.buildCreator(1200);
 
 $(document).on('click',function(e) {
 	if($(e.target).parents('.active-cloud').length <= 0) {
