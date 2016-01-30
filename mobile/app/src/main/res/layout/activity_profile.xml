@@ -6,71 +6,19 @@
     android:background="@color/blue_sky"
     tools:context="br.com.dreambox.activity.ProfileActivity">
 
-    <include layout="@layout/clouds_layout" />
+    <include
+        layout="@layout/clouds_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/img_avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/avatar_margin"
-        android:src="@drawable/avatar_4"
-        app:layout_heightPercent="45%"
-        app:layout_widthPercent="45%" />
+    <include
+        android:id="@+id/peofile_area"
+        layout="@layout/peofile_area" />
 
-    <TextView
-        android:id="@+id/user_nickname"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/city_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/img_avatar"
-        android:gravity="center"
-        android:text="Leonardo Sibela"
-        android:textColor="@android:color/black"
-        android:textSize="22sp" />
-
-    <TextView
-        android:id="@+id/user_location_age"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/user_nickname"
-        android:gravity="center"
-        android:text="7 anos, Mogi Guaçu - SP"
-        android:textColor="@android:color/black"
-        android:textSize="22sp" />
-
-    <TextView
-        android:id="@+id/user_foundation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/user_location_age"
-        android:gravity="center"
-        android:text="Instituição do User"
-        android:textColor="@android:color/black"
-        android:textSize="22sp" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/user_foundation">
-
-        <View
-            android:id="@+id/lineDivider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:background="@layout/gradient"
-            android:layout_marginTop="16dp"/>
-
-        <android.support.design.widget.FloatingActionButton
-            android:layout_margin="15dp"
-            android:id="@+id/floatingActionButton"
-            android:src="@drawable/ic_create_white_48dp"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp" />
-
-    </RelativeLayout>
+        android:layout_below="@id/peofile_area" />
 
 </android.support.percent.PercentRelativeLayout>
