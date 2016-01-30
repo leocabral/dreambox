@@ -50,10 +50,10 @@ img {
 	top: 410px !important;
 	left: calc(50vw - 110px) !important;
 	opacity: 1 !important;
+	z-index: 1;
 	-webkit-transform: scale(5) !important;
 	-moz-transform: scale(5) !important;
 	transform:scale(5) !important;
-	opacity : 1;
 	-webkit-animation: initial !important;
 	-moz-animation:initial !important;
 	-o-animation:initial !important;
@@ -86,6 +86,7 @@ img {
 	background: #fff;
 	width: 100px; height: 80px;
 	position: absolute; top: -15px; left: 10px;
+	z-index: -1;
 	
 	border-radius: 100px;
 	-moz-border-radius: 100px;
@@ -214,7 +215,6 @@ background-color: #fff;
 }
 .opened-dream {
     position: relative;
-    z-index: 1;
 	-webkit-transform: scale(0.2);
 	-moz-transform: scale(0.2);
 	transform:scale(0.2);
