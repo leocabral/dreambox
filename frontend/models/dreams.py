@@ -13,6 +13,7 @@ class Dreams(ndb.Model):
     description = ndb.StringProperty()
     date = ndb.DateTimeProperty(auto_now_add=True)
     dreamer = ndb.IntegerProperty()
+    tags = ndb.JsonProperty()
 
     @classmethod
     def find_all(cls):
@@ -39,6 +40,7 @@ class Dreams(ndb.Model):
         dream = Dreams.find(_id)
         dream.name = dream_new.name
         dream.description = dream_new.description
+        dream.tags = dream_new.tags
         return dream.put().get()
 
 
@@ -47,7 +49,11 @@ class DreamsAPI(webapp2.RequestHandler):
         return webapp2.Response(ndb_json.dumps(Dreams.find_all()))
 
     def post(self):
-        dream = Dreams(name = self.request.get('name'), description = self.request.get('description'), dreamer = int(self.request.get('dreamer')))
+        dream = Dreams(
+                    name = self.request.get('name'),
+                    description = self.request.get('description'),
+                    tags = json.loads(self.request.get('tags')),
+                    dreamer = int(self.request.get('dreamer')))
 
         return webapp2.Response(ndb_json.dumps(dream.put().get()))
 
@@ -73,7 +79,7 @@ class DreamsAPI(webapp2.RequestHandler):
         return webapp2.Response(ndb_json.dumps(Dreams.random()))
 
     def put(self, dream_id):
-        return webapp2.Response(ndb_json.dumps(Dreams.update(int(dream_id), Dreams(name = self.request.get('name'), description = self.request.get('description')))))
+        return webapp2.Response(ndb_json.dumps(Dreams.update(int(dream_id), Dreams(name = self.request.get('name'), description = self.request.get('description'), tags = json.loads(self.request.get('tags'))))))
 
     def delete(self, dream_id):
         Dreams.find(int(dream_id)).key.delete()
