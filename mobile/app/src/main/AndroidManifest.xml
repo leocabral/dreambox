@@ -16,13 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.DreamActivity"
             android:label="@string/title_activity_dream" />
         <activity
-            android:name=".activity.SignUpActivity"
+            android:name="br.com.dreambox.activity.SignUpActivity"
             android:label="@string/title_activity_sign_up" />
+        <activity
+            android:name="br.com.dreambox.activity.HomeActivity"
+            android:label="@string/title_activity_home" />
     </application>
 
 </manifest>

@@ -15,4 +15,6 @@
     <string name="create_dream_text">Crie seu sonho aqui!</string>
     <string name="description">Descrição</string>
     <string name="title">Titulo</string>
+
+    <string name="title_activity_home">Home</string>
 </resources>
