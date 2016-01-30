@@ -20,15 +20,15 @@ var createCloud = function () {
 var buildCreator = function (interval) {
 	var creator = setInterval(function() {
 		createCloud();
-		if (cloud >= 40) {
+		if (clouds >= 50) {
 			clearInterval(creator);
 		}
 	}, interval);
 	return creator;
 }
-buildCreator(600);
 buildCreator(800);
 buildCreator(1000);
+buildCreator(1200);
 
 $('#clouds > div').unbind('click').click(function() {
 	
