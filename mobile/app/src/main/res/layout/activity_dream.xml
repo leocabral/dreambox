@@ -2,8 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="@dimen/activity_vertical_margin"
+    android:background="@android:color/white"
     tools:context=".activity.DreamActivity">
 
     <TextView
@@ -17,6 +19,7 @@
         android:id="@+id/dream_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_activity_margin"
         android:inputType="text"
         android:hint="@string/title"/>
 
@@ -26,6 +29,42 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:hint="@string/description"/>
+
+    <co.lujun.androidtagview.TagContainerLayout
+        android:id="@+id/dream_tag_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:padding="10dp"
+        app:container_enable_drag="false"
+        app:horizontal_interval="10dp"
+        app:vertical_interval="10dp"
+        app:container_border_width="0dp"
+        app:container_background_color="@android:color/white"
+        app:container_border_radius="0dp"
+        app:container_border_color="@android:color/white"
+        app:tag_clickable="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/dream_text_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/dream_add_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="add tag" />
+
+    </LinearLayout>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/create_dream_button"

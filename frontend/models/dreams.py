@@ -16,13 +16,20 @@ class Dreams(ndb.Model):
     def find_all(cls):
         return Dreams.query()
 
+    @classmethod
+    def find(csl, _id):
+        return Dreams.get_by_id(_id)
+
 
 class DreamsAPI(webapp2.RequestHandler):
-    def get(self):
+    def list(self):
         self.response.out.write(ndb_json.dumps(Dreams.find_all()))
 
     def post(self):
         dream = Dreams(name = self.request.get('name'), description = self.request.get('description'))
 
         self.response.out.write(ndb_json.dumps(dream.put().get()))
+
+    def get(self, dream_id):
+        self.response.out.write(ndb_json.dumps(Dreams.find(int(dream_id))))
 

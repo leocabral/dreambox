@@ -28,4 +28,7 @@
     <string name="got_it">OK, ENTENDI</string>
     <string name="clouds_instruction">Toque em qualquer nuvem para ver um sonho</string>
     <string name="robot_instruction">Toque no robô para ver o menu</string>
+    <string name="dreamer_name">Sonhador</string>
+    <string name="dream_title">Titulo sonho</string>
+    <string name="description_detail">Só uma pequena descrição lalalalalalaasldjasd asdjsaldjaslkdj laskdjsakl jaskldj asldkj salk js</string>
 </resources>
