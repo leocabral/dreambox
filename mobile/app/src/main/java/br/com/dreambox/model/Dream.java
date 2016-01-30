@@ -10,7 +10,6 @@ public class Dream {
     private Date creationDate;
     private Boolean realized;
 
-
     public String getTitle() {
         return title;
     }
