@@ -376,8 +376,18 @@ var bindClouds = function() {
 		var cloud = $(this);
 //		$.getJSON('/api/blah').done(function(dream) {
 			$.get('/template/opened-dream.html').done(function(template) {
+				cloud.animate({
+					left : ($(window).width()/2-$(cloud).width()/2)+'px',
+				}, 40);
+				cloud.css({
+					'-webkit-animation': 'none',
+					'-moz-animation': 'none',
+					'-o-animation': 'none',
+					'animation' : 'none'
+				});
 				cloud.addClass('active-cloud');
 				cloud.html(doT.template(template)(dream));
+				
 			});
 //		});
 		unbindClouds();
@@ -390,7 +400,13 @@ var unbindClouds = function() {
 
 $(document).on('click',function(e) {
 	if(!$(e.target).hasClass('active-cloud')) {
-		$('.active-cloud').removeClass('active-cloud').html('');
+		var moveSpeed = Math.floor((Math.random() * 3) + 6) * 3;
+		$('.active-cloud').removeClass('active-cloud').html('').css({
+			'-webkit-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
+			'-moz-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
+			'-o-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
+			'animation' : 'moveclouds ' + moveSpeed + 's linear infinite'
+		});
 	    bindClouds();
 	}
     $('.thinking').fadeOut();
