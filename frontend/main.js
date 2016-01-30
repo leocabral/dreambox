@@ -330,7 +330,7 @@ window.addEventListener(
 
 
 $('img.robot').unbind('click').click(function() {
-	console.info('aeho');
+	
 });
 
 var clouds = 0;

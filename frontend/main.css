@@ -60,7 +60,23 @@ img {
 	
 }
 
-.cloud:before, .cloud:after {
+.thinking {
+    bottom: 0;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    width: 250px;
+    z-index: 9999;
+}
+.thinking ul li {
+	width: 200px; height: 60px;
+	background: #fff;
+	
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+}
+.cloud:before, .cloud:after, .thinking ul li:after, .thinking ul li:before {
 	content: '';
 	position: absolute; 
 	background: #fff;
@@ -76,10 +92,12 @@ img {
 	-moz-transform: rotate(30deg);
 }
 
-.cloud:after {
+.cloud:after, .thinking ul li:after{
 	width: 120px; height: 120px;
 	top: -55px; left: auto; right: 15px;
 }
+
+
 
 @-webkit-keyframes moveclouds {
 	0% {margin-left: 100%;}
@@ -103,5 +121,16 @@ img {
 	
 }
 .character {
+	
+}
+
+
+.x2 {
+	left: 0px;
+	
+	-webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+	transform: scale(0.6);
+	opacity: 1; /*opacity proportional to the size*/
 	
 }
