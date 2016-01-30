@@ -1,5 +1,5 @@
 import json
-import cgi
+import random
 
 from google.appengine.ext import ndb
 from google.appengine.ext import db
@@ -26,6 +26,14 @@ class Dreams(ndb.Model):
     def search_by_name(cls, term):
         return Dreams.query(ndb.AND(Dreams.name_search >= term.lower(), Dreams.name_search <= term.lower() + u'\ufffd'))
 
+    @classmethod
+    def of(cls, dreamer_id):
+        return Dreams.query(Dreams.dreamer == dreamer_id)
+
+    @classmethod
+    def random(cls):
+        return random.sample(Dreams.query().fetch(keys_only=True), 1)[0].get()
+
 
 class DreamsAPI(webapp2.RequestHandler):
     def list(self):
@@ -41,3 +49,9 @@ class DreamsAPI(webapp2.RequestHandler):
 
     def search(self, term):
         self.response.out.write(ndb_json.dumps(Dreams.search_by_name(term)))
+
+    def list_by_dreamer(self, dreamer_id):
+        self.response.out.write(ndb_json.dumps(Dreams.of(dreamer_id)))
+
+    def random(self):
+        self.response.out.write(ndb_json.dumps(Dreams.random()))
