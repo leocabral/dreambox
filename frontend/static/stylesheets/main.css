@@ -78,8 +78,6 @@ ul.share-buttons img{
 	transition: left 1s linear, transform 1s linear, top 1s linear, opacity 1s linear;
 }
 
-}
-
 .cloud.active-cloud {
 	top: 410px !important;
 	opacity: 1 !important;
@@ -202,7 +200,7 @@ background-color: #fff;
 .x2 {
 	left: 0px;
 	
-	-webkit-transform: scale(0.6);
+	-webkit-transform:  (0.6);
 	-moz-transform: scale(0.6);
 	transform: scale(0.6);
 	opacity: 1; /*opacity proportional to the size*/
