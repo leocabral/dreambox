@@ -104,7 +104,7 @@ public class Dreamer {
         DreamboxApi.get().getDreamer(dreamer, new Callback<JsonObject>() {
             @Override
             public void success(JsonObject jsonObject, Response response) {
-                String n = jsonObject.get("name").getAsString(); //+ " " + jsonObject.get("last_name").getAsString();
+                String n = jsonObject.get("name").getAsString();
                 nameLess(n);
             }
 
