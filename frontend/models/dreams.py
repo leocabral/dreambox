@@ -8,7 +8,8 @@ from lib import ndb_json
 import webapp2
 
 class Dreams(ndb.Model):
-    name = ndb.StringProperty(indexed=True)
+    name = ndb.StringProperty()
+    name_search = ndb.ComputedProperty(lambda self: self.name.lower())
     description = ndb.StringProperty()
     date = ndb.DateTimeProperty(auto_now_add=True)
     dreamer = ndb.IntegerProperty()
@@ -23,7 +24,7 @@ class Dreams(ndb.Model):
 
     @classmethod
     def search_by_name(cls, term):
-        return Dreams.query(ndb.AND(Dreams.name >= term, Dreams.name <= term + u'\ufffd'))
+        return Dreams.query(ndb.AND(Dreams.name_search >= term.lower(), Dreams.name_search <= term.lower() + u'\ufffd'))
 
 
 class DreamsAPI(webapp2.RequestHandler):
@@ -31,7 +32,7 @@ class DreamsAPI(webapp2.RequestHandler):
         self.response.out.write(ndb_json.dumps(Dreams.find_all()))
 
     def post(self):
-        dream = Dreams(name = self.request.get('name'), description = self.request.get('description'))
+        dream = Dreams(name = self.request.get('name'), description = self.request.get('description'), dreamer = int(self.request.get('dreamer')))
 
         self.response.out.write(ndb_json.dumps(dream.put().get()))
 
