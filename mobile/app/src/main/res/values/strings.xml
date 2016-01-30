@@ -22,6 +22,7 @@
     <string name="nickname_field">Apelido (será seu login no Dreambox)</string>
     <string name="password_field">Senha</string>
     <string name="dreamer_button">Torne-se um sonhador !!</string>
+    <string name="edit_dreamer_button">Alterar dados</string>
     <string name="organization_field">Sua organização</string>
     <string name="title_activity_dream_detail">DreamDetail</string>
     <string name="email_field">Seu Email</string>
