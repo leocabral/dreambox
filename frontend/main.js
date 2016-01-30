@@ -383,13 +383,13 @@ var openCloud = function(cloud, html) {
 	$('.follow').unbind('click').click(function() {
 		var button = $(this);
 		var id = button.data('id');
-		$.ajax({
+//		$.ajax({
 //			method: 'PUT',
 //			url: 'some.php',
 //			data: { 'id' : id }
-		}).done(function() {
+//		}).done(function() {
 		    button.prop('disabled', true);
-        });
+//        });
 	});
 	unbindClouds();
 };
