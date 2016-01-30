@@ -1,5 +1,5 @@
 var clouds = 0;
-var cloudCreator = setInterval(function() {
+var createCloud = function () {
 	var cloud = $('<div class=" cloud"></div>').appendTo('#clouds');
 	var top = Math.floor((Math.random() * 8)) * 5;
 	var moveSpeed = Math.floor((Math.random() * 3) + 6) * 3;
@@ -15,12 +15,20 @@ var cloudCreator = setInterval(function() {
 		'-o-animation' : 'moveclouds ' + moveSpeed + 's linear infinite'
 	});
 	
-	i++;
 	clouds++;
-	if (clouds == 10)
-		clearInterval(cloudCreator);
-}, 1000);
-
+}
+var buildCreator = function (interval) {
+	var creator = setInterval(function() {
+		createCloud();
+		if (cloud >= 40) {
+			clearInterval(creator);
+		}
+	}, interval);
+	return creator;
+}
+buildCreator(600);
+buildCreator(800);
+buildCreator(1000);
 
 $('#clouds > div').unbind('click').click(function() {
 	
