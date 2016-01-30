@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+	<head>
+		<!-- you may add some css here -->
+		<link type="text/css" rel="stylesheet" href="stylesheets/main.css" />
+		{% block head %}{% endblock %}
+	</head>
+	<body>
+		{% block content %}{% endblock %}
+		<!-- you may add some js here -->
+		{% block initPage %}{% endblock %}
+	</body>
+</html>
+{% endautoescape %}

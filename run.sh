@@ -1,2 +1,2 @@
-cd web && python -m SimpleHTTPServer 8000
+cd web && python -m SimpleHTTPServer 1234
 
