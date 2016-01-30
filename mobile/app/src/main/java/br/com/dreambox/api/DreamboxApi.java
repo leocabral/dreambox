@@ -45,7 +45,7 @@ public class DreamboxApi {
         void dreamers(Callback<JsonArray> response);
 
         @GET("/api/dreamers/{dreamerId}")
-        void getDreamer(@Path("dreamerId") int dreamerId, Callback<JsonObject> response);
+        void getDreamer(@Path("dreamerId") long dreamerId, Callback<JsonObject> response);
 
         @GET("/api/dreams/of/{dreamerId}")
         void getDreamOf(@Path("dreamerId") int dreamerId, Callback<JsonArray> response);

@@ -1,5 +1,10 @@
 package br.com.dreambox.model;
 
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Date;
 
 public class Dream {
@@ -53,5 +58,13 @@ public class Dream {
 
     public void setRealized(Boolean realized) {
         this.realized = realized;
+    }
+
+    public void fromJson(JsonObject obj) throws JSONException {
+        this.dreamer = new Dreamer();
+        this.dreamer.nameFromJson(obj.get("dreamer").getAsLong());
+
+        this.creationDate = null;
+        this.realized = false;
     }
 }
