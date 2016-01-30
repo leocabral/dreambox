@@ -1,11 +1,12 @@
 package br.com.dreambox.api;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import okhttp3.OkHttpClient;
+import com.squareup.okhttp.OkHttpClient;
+import retrofit.client.OkClient;
 import retrofit.Callback;
 import retrofit.RestAdapter;
-import retrofit.client.OkClient;
 import retrofit.http.Field;
 import retrofit.http.GET;
 import retrofit.http.POST;
@@ -21,7 +22,7 @@ public class DreamboxApi {
     public interface Dreambox {
 
         @GET("/api/dreams")
-        void dreams(Callback<JsonObject> response);
+        void dreams(Callback<JsonArray> response);
 
         @GET("/api/dreams/{dreamId}")
         void getDreams(@Path("dreamId") int dreamId, Callback<JsonObject> response);
@@ -35,7 +36,7 @@ public class DreamboxApi {
                          @Field("description") String description, Callback<JsonObject> response);
 
         @GET("/api/dreamers")
-        void dreamers(Callback<JsonObject> response);
+        void dreamers(Callback<JsonArray> response);
 
         @GET("/api/dreamers/{dreamerId}")
         void getDreamer(@Path("dreamerId") int dreamerId, Callback<JsonObject> response);
@@ -53,10 +54,12 @@ public class DreamboxApi {
 
     public static Dreambox get() {
         if (dreambox == null) {
+            OkHttpClient okHttpClient = new OkHttpClient();
 
             RestAdapter retrofit = new RestAdapter.Builder()
                     .setEndpoint(ENDPOINT_URL)
-                    .setClient(new OkClient())
+                    .setLogLevel(RestAdapter.LogLevel.FULL)
+                    .setClient(new OkClient(okHttpClient))
                     .build();
 
             dreambox = retrofit.create(Dreambox.class);

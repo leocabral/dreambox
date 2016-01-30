@@ -383,7 +383,7 @@ var openCloud = function(cloud, html) {
 };
 
 var bindClouds = function() {
-	$('#clouds').unbind("click").on('click', '> div', function(e) {
+	$('#clouds').on('click', '> div', function(e) {
 		var dream = {
 				'id' : '1234',
 				'avatar' : 'avatar.png',
@@ -402,6 +402,19 @@ var bindClouds = function() {
 var unbindClouds = function() {
 	$('#clouds').unbind("click");
 };
+
+$('#novo-sonho').unbind('click').click(function(e) {
+    $('#new-cloud').addClass('active-cloud');
+    e.stopPropagation();
+});
+
+$('#new-cloud').unbind('click').click(function(e) {
+    e.stopPropagation();
+});
+
+$('#meu-perfil').unbind('click').click(function(e) {
+    e.stopPropagation();
+});
 
 $(document).on('click',function(e) {
 	if(!$(e.target).hasClass('active-cloud')) {
