@@ -108,7 +108,7 @@ public class ProfileActivity extends AppCompatActivity {
         dreamer.setBirthday(calendar.getTime());
         dreamer.setCity("Campinas");
         dreamer.setState("SP");
-        dreamer.setFoundation("Fundação do Sonhador");
+        dreamer.setFoundation("Fundação");
 
         return dreamer;
     }
