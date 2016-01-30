@@ -22,6 +22,7 @@
         app:layout_widthPercent="50%" />
 
     <include
+        android:id="@+id/clouds"
         layout="@layout/clouds_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,4 +46,11 @@
         android:src="@drawable/robot"
         app:layout_heightPercent="25%"
         app:layout_widthPercent="25%" />
+
+    <FrameLayout
+        android:id="@+id/dream_card_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
 </android.support.percent.PercentRelativeLayout>

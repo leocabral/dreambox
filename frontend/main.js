@@ -361,14 +361,31 @@ var buildCreator = function (interval) {
 		}
 	}, interval);
 	return creator;
-}
+};
+createCloud();
 buildCreator(800);
 buildCreator(1000);
 buildCreator(1200);
 
+var openCloud = function(cloud, html) {
+	cloud.animate({
+		left : ($(window).width()/2-$(cloud).width()/2)+'px',
+	}, 40);
+	cloud.css({
+		'-webkit-animation': 'none',
+		'-moz-animation': 'none',
+		'-o-animation': 'none',
+		'animation' : 'none'
+	});
+	cloud.addClass('active-cloud');
+	cloud.html(html);
+	unbindClouds();
+};
+
 var bindClouds = function() {
-	$('#clouds').unbind("click").on('click', '> div', function(e) {
+	$('#clouds').on('click', '> div', function(e) {
 		var dream = {
+				'id' : '1234',
 				'avatar' : 'avatar.png',
 				'title' : 'Dream title',
 				'description' : 'Sempre sonhei em ser HU3HU3HU3HU3BRBR'
@@ -376,27 +393,28 @@ var bindClouds = function() {
 		var cloud = $(this);
 //		$.getJSON('/api/blah').done(function(dream) {
 			$.get('/template/opened-dream.html').done(function(template) {
-				cloud.animate({
-					left : ($(window).width()/2-$(cloud).width()/2)+'px',
-				}, 40);
-				cloud.css({
-					'-webkit-animation': 'none',
-					'-moz-animation': 'none',
-					'-o-animation': 'none',
-					'animation' : 'none'
-				});
-				cloud.addClass('active-cloud');
-				cloud.html(doT.template(template)(dream));
-				
+				openCloud(cloud, doT.template(template)(dream));
 			});
 //		});
-		unbindClouds();
 	    e.stopPropagation();
 	});
 };
 var unbindClouds = function() {
 	$('#clouds').unbind("click");
-}
+};
+
+$('#novo-sonho').unbind('click').click(function(e) {
+    $('#new-cloud').addClass('active-cloud');
+    e.stopPropagation();
+});
+
+$('#new-cloud').unbind('click').click(function(e) {
+    e.stopPropagation();
+});
+
+$('#meu-perfil').unbind('click').click(function(e) {
+    e.stopPropagation();
+});
 
 $(document).on('click',function(e) {
 	if(!$(e.target).hasClass('active-cloud')) {
@@ -413,4 +431,22 @@ $(document).on('click',function(e) {
 });
 
 bindClouds();
-
+var params = window.location.search;
+if (params) {
+	var entry = params.split('=');
+	if (entry[0] == '?id') {
+		var id = entry[1].replace('/', "");
+		var dream = {
+				'id' : '1234',
+				'avatar' : 'avatar.png',
+				'title' : 'Dream title',
+				'description' : 'Sempre sonhei em ser HU3HU3HU3HU3BRBR'
+		};
+		var cloud = $(".cloud:eq(0)");
+//		$.getJSON('/api/dream/' + id).done(function(dream) {
+			$.get('/template/opened-dream.html').done(function(template) {
+				openCloud(cloud, doT.template(template)(dream));
+			});
+//		});
+	}
+}
