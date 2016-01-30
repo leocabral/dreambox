@@ -13,7 +13,7 @@
 	</div>
     <div class="thinking">
         <div class="cloud x2 with-hover" id="novo-sonho">
-            <div class="opened-dream normal-font">
+            <div class="cloud-content normal-font">
                 Novo Sonho
             </div>
             <div class="first-ball">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="cloud x3 with-hover"  id="meu-perfil">
-            <div class="opened-dream normal-font">
+            <div class="cloud-content normal-font">
                 Meu Perfil
             </div>
             <div class="first-ball">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="cloud x2 with-hover" id="sign-in">
-            <div class="opened-dream normal-font">
+            <div class="cloud-content normal-font">
                 Entrar
             </div>
             <div class="first-ball">
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="cloud x3 with-hover"  id="sign-up">
-            <div class="opened-dream normal-font">
+            <div class="cloud-content normal-font">
                 Cadastrar
             </div>
             <div class="first-ball">

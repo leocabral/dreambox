@@ -318,3 +318,11 @@ ul.share-buttons img{
     left: -65%;
     position: relative;	
 }
+
+.textarea-dream {
+	top: 0;
+    position: absolute;
+    left: 40%;
+    width: 46%;
+    font-size: 4px;
+}

@@ -136,7 +136,6 @@ var Cloud = (function() {
 		        });
 
 				$('#clouds').unbind("click");				
-				Cloud.bindFollow();
 			});
 		},
 
@@ -166,7 +165,6 @@ var Cloud = (function() {
 		        });
 
 				$('#clouds').unbind("click");				
-				Cloud.bindFollow();
 			});
 		},
 		
