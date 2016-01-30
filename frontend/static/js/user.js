@@ -1,10 +1,21 @@
 var Helper = (function() {
+	var cache = {};
 	var Helper = {
 		'id' : function() {
-			return '5275456790069248'
+			if(cache['loggedUser']) {
+				return id;
+			} else {
+				return undefined;
+			}
 		},
 		isLogged : function() {
-			return false;
+			return cache['loggedUser'] != undefined;
+		}, 
+		login : function(helper) {
+			cache['loggedUser'] = helper;
+		},
+		logout : function() {
+			delete cache['loggedUser'];
 		}
 	};
 	return Helper;

@@ -7,10 +7,10 @@ angular.module('dream-box').controller('SignupController', ['$http', function($h
 		password : ''
 	};
 	vm.signup = function() {
-		$http.post('/api/helpers', vm.newUser).then(function(){
-			console.log(arguments);
+		$http.post('/api/helpers', vm.newUser).then(function(response){
+			Helper.login(response);
+			Cloud.cleanActive();
 		}, function(){
-			console.log(arguments);
 		});
 	};
 }]);

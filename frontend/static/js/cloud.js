@@ -135,9 +135,11 @@ var Cloud = (function() {
 		'bind' : function() {
 			$('#clouds').on('click', '> div', function(e) {
 				var cloud = $(this);
-				Dream.service.findRandom(function(dream) {
-					Cloud.open(cloud, dream);
-				});
+				if(cloud.parents('.active-cloud').length <= 0) {
+					Dream.service.findRandom(function(dream) {
+						Cloud.open(cloud, dream);
+					});
+				}
 			    e.stopPropagation();
 			});
 		},
