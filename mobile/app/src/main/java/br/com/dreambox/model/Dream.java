@@ -10,6 +10,10 @@ public class Dream {
     private Date creationDate;
     private Boolean realized;
 
+    public Dream(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 
     public String getTitle() {
         return title;

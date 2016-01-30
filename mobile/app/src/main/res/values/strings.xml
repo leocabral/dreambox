@@ -32,4 +32,7 @@
     <string name="dream_title">Titulo sonho</string>
     <string name="description_detail">Só uma pequena descrição lalalalalalaasldjasd asdjsaldjaslkdj laskdjsakl jaskldj asldkj salk js</string>
     <string name="last_name_field">Sobrenome</string>
+    <string name="title_dreamer">Cadastrado de sonhador</string>
+    <string name="dreams">Sonhos</string>
+    <string name="home">Home</string>
 </resources>

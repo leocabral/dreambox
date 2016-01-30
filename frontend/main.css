@@ -19,11 +19,26 @@ canvas {
 
 img {
   position : absolute;
+}
+img.robot {
   right: 0;
   bottom: 0;
   margin-bottom: -130px;
   transform: rotate(10deg);  
   z-index: 9999;
+}
+
+ul.share-buttons{
+  list-style: none;
+  padding: 0;
+}
+
+ul.share-buttons li{
+  display: inline;
+}
+
+ul.share-buttons img{
+  width: 32px;
 }
 
 #clouds{
@@ -254,7 +269,7 @@ background-color: #fff;
 .confirmation-button {
     outline: 0;
     cursor: pointer;
-background-color: #474;
+	background-color: #474;
     border: 0 none;
     border-radius: 3px;
     color: #000;
@@ -263,4 +278,22 @@ background-color: #474;
     padding: 5px;
     position: absolute;
     right: 0;
+}
+.confirmation-button:disabled {
+	background-color: #9E9E9E;
+}
+.confirmation-button.follow {
+    margin-top: 0px;
+    position: relative;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    left: 0;
+}
+
+.buttons {
+	left: 210%;
+	top: 180%;
+	display: flex;
+	position: relative;
 }

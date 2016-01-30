@@ -361,28 +361,45 @@ var buildCreator = function (interval) {
 		}
 	}, interval);
 	return creator;
-}
+};
+createCloud();
 buildCreator(800);
 buildCreator(1000);
 buildCreator(1200);
+
+var openCloud = function(cloud, html) {
+	cloud.animate({
+		left : ($(window).width()/2-$(cloud).width()/2)+'px',
+	}, 40);
+	cloud.css({
+		'-webkit-animation': 'none',
+		'-moz-animation': 'none',
+		'-o-animation': 'none',
+		'animation' : 'none'
+	});
+	cloud.addClass('active-cloud');
+	cloud.html(html);
+
+	$('.follow').unbind('click').click(function() {
+		var button = $(this);
+		var id = button.data('id');
+//		$.ajax({
+//			method: 'PUT',
+//			url: 'some.php',
+//			data: { 'id' : id }
+//		}).done(function() {
+		    button.prop('disabled', true);
+//        });
+	});
+	unbindClouds();
+};
 
 var bindClouds = function() {
 	$('#clouds').on('click', '> div', function(e) {
 		var cloud = $(this);
 		$.getJSON('/api/dreams/random').done(function(dream) {
 			$.get('/template/opened-dream.html').done(function(template) {
-				cloud.animate({
-					left : ($(window).width()/2-$(cloud).width()/2)+'px',
-				}, 40);
-				cloud.css({
-					'-webkit-animation': 'none',
-					'-moz-animation': 'none',
-					'-o-animation': 'none',
-					'animation' : 'none'
-				});
-				cloud.addClass('active-cloud');
-				cloud.html(doT.template(template)(dream));
-				
+				openCloud(cloud, doT.template(template)(dream));
 			});
 		});
 		unbindClouds();
@@ -391,7 +408,7 @@ var bindClouds = function() {
 };
 var unbindClouds = function() {
 	$('#clouds').unbind("click");
-}
+};
 
 $('#novo-sonho').unbind('click').click(function(e) {
     $('#new-cloud').addClass('active-cloud');
@@ -407,7 +424,7 @@ $('#meu-perfil').unbind('click').click(function(e) {
 });
 
 $(document).on('click',function(e) {
-	if(!$(e.target).hasClass('active-cloud')) {
+	if($(e.target).parents('.active-cloud').length <= 0) {
 		var moveSpeed = Math.floor((Math.random() * 3) + 6) * 3;
 		$('.active-cloud').removeClass('active-cloud').html('').css({
 			'-webkit-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
@@ -429,3 +446,22 @@ $('#salvar-sonho').unbind('click').click(function() {
         dreamer: 5639445604728832
     });
 })
+var params = window.location.search;
+if (params) {
+	var entry = params.split('=');
+	if (entry[0] == '?id') {
+		var id = entry[1].replace('/', "");
+		var dream = {
+				'id' : '1234',
+				'avatar' : 'avatar.png',
+				'title' : 'Dream title',
+				'description' : 'Sempre sonhei em ser HU3HU3HU3HU3BRBR'
+		};
+		var cloud = $(".cloud:eq(0)");
+//		$.getJSON('/api/dream/' + id).done(function(dream) {
+			$.get('/template/opened-dream.html').done(function(template) {
+				openCloud(cloud, doT.template(template)(dream));
+			});
+//		});
+	}
+}
