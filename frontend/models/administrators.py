@@ -37,6 +37,10 @@ class Administrators(ndb.Model):
 
 class AdministratorsAPI(webapp2.RequestHandler):
 
+	def list(self):
+		logging.info('Listing Administrators')
+		self.response.out.write(ndb_json.dumps(Administrators.find_all()))
+
 	def authenticate(self):
 		logging.info('Trying to authenticate')
 		email = self.request.get('email')

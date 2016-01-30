@@ -2,6 +2,7 @@
 <html ng-app="dream-box-admin">
 	<head>
 		<!-- you may add some css here -->
+		<link type="text/css" rel="stylesheet" href="stylesheets/admin.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
@@ -9,6 +10,8 @@
 		<script src="/js/controllers/admin-signin-controller.js"></script>
 		<script src="/js/controllers/admin-user-controller.js"></script>
 		<script src="/js/controllers/admin-dream-list-controller.js"></script>
+		<script src="/js/controllers/admin-admin-list-controller.js"></script>
+		<script src="/js/controllers/admin-helpers-list-controller.js"></script>
 	</head>
 	<body>
 		<div ng-controller="SigninController as sigin" ng-hide="$root.isLogged()">
@@ -27,12 +30,85 @@
 		        </div>
 	        </form>
 		</div>
-		<div ng-controller="AdminUserController as user" ng-show="$root.isLogged()">
+		<div ng-controller="AdminUserController as user" ng-show="$root.isLogged()" class="logged-user">
 			<span>{[{ user.getEmail() }]}</span>
 			<button ng-click="user.logout()">Logout</buttom>
 		</div>
 		<div ng-controller="DreamList as dreams" ng-if="$root.isLogged()">
-
+			<h1>Sonhos</h1>
+			<table>
+				<tr>
+					<th>&nbsp;</th>
+					<th>Nome</th>
+					<th>Descrição</th>
+					<th>Aprovar</th>
+				</tr>
+				<tr ng-repeat="dream in dreams.dreams">
+					<th><input type="checkbox"/></th>
+					<td>{[{ dream.name }]}</td>
+					<td>{[{ dream.description }]}</td>
+					<td>
+						<button>Sim</button>
+						<button>Não</button>
+					</td>
+				</tr>
+				<tr>
+					<td><button>Apagar</button></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+		<div ng-controller="AdminList as admins" ng-if="$root.isLogged()">
+			<h1>Administradores</h1>
+			<table>
+				<tr>
+					<th>&nbsp;</th>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Ações</th>
+				</tr>
+				<tr ng-repeat="adm in admins.admins">
+					<th><input type="checkbox"/></th>
+					<td>{[{ adm.name }]}</td>
+					<td>{[{ adm.email }]}</td>
+					<td>
+						<button>Habilitar</button>
+					</td>
+				</tr>
+				<tr>
+					<td><button>Apagar</button></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+		<div ng-controller="HelpersList as helpers" ng-if="$root.isLogged()">
+			<h1>Realizadores</h1>
+			<table>
+				<tr>
+					<th>&nbsp;</th>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Ações</th>
+				</tr>
+				<tr ng-repeat="hlp in helpers.helpers">
+					<td><input type="checkbox"/></td>
+					<td>{[{ hlp.name }]}</td>
+					<td>{[{ hlp.email }]}</td>
+					<td>
+						<button>Aprovar Realizações</button>
+					</td>
+				</tr>
+				<tr>
+					<td><button>Apagar</button></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
 		</div>
 	</body>
 </html>

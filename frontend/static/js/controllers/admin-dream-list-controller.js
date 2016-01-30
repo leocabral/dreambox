@@ -1,9 +1,9 @@
-angular.module('dream-box-admin').controller('DreamList', ['$scope', 'AuthenticationService', '$rootScope', 
-	function ($scope, AuthenticationService, $rootScope) {
+angular.module('dream-box-admin').controller('DreamList', ['$scope', 'AuthenticationService', '$rootScope', '$http',
+	function ($scope, AuthenticationService, $rootScope, $http) {
 		
 	var vm = this;
-	console.log('DreamList', this)
-	vm.isLogged = function() {
-		return AuthenticationService.HasCredentials();
-	};	
+	vm.dreams = [];
+	$http.get('/api/dreams').then(function(response){
+		vm.dreams = response.data;
+	});	
 }]);

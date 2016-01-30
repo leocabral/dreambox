@@ -1,0 +1,42 @@
+body {
+	margin: 0;
+	padding: 10px;
+}
+table {
+	width: 100%;
+    border-collapse: collapse;
+}
+
+table td:first-child,
+table th:first-child {
+	width: 80px;
+	text-align: center;
+}
+
+table td:last-child,
+table th:last-child {
+	text-align: center;
+}
+
+table th, table td {
+	border: solid 1px #CCCCCC;
+	padding: 0.5em;
+}
+
+.logged-user {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: solid 1px #CCCCCC;
+	border-top-style: none;
+	border-right-style: none;
+	padding: 1em;
+	border-radius: 0 0 0 5px;
+	background-color: rgba(55, 55, 55, 0.2);
+}
+.logged-user button {
+	margin: 5px;
+}
+.logged-user span {
+	font-style: italic;
+}

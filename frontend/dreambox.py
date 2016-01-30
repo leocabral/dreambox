@@ -24,5 +24,6 @@ app = webapp2.WSGIApplication([
 	webapp2.Route(r'/api/helpers/authenticate', handler=helpers.HelpersAPI, handler_method='authenticate', methods=['POST']),
 	webapp2.Route(r'/api/helpers/<:\d+>', handler=helpers.HelpersAPI, handler_method='mantain', methods=['GET', 'PUT', 'DELETE']),
 	
-	webapp2.Route(r'/api/admin/authenticate', handler=administrators.AdministratorsAPI, handler_method='authenticate', methods=['POST'])
+	webapp2.Route(r'/api/admin/authenticate', handler=administrators.AdministratorsAPI, handler_method='authenticate', methods=['POST']),
+	webapp2.Route(r'/api/admin', handler=administrators.AdministratorsAPI, handler_method='list', methods=['GET'])
 ], debug=True)
