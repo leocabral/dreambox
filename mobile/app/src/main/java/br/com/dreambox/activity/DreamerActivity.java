@@ -69,7 +69,7 @@ public class DreamerActivity extends AppCompatActivity implements DatePickerDial
                 new Callback<JsonObject>() {
                     @Override
                     public void success(JsonObject jsonObject, Response response) {
-                        Toast.makeText(getApplicationContext(), "Sonho criado com sucesso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Perfil criado com sucesso", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
