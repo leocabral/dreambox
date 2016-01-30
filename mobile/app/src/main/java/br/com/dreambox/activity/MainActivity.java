@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.navigation_view)
     NavigationView mNavigationView;
 
-    @Bind(R.id.loading)
+    @Bind(R.id.home_loading)
     ProgressBar mProgressBar;
 
     private View currentDream;
@@ -253,7 +253,8 @@ public class MainActivity extends AppCompatActivity {
         currentDream.startAnimation(animation);
     }
 
-    private static class CardDreamViewHolder {
+    static class CardDreamViewHolder {
+
         @Bind(R.id.name_dreamer)
         TextView nameDreamer;
 

@@ -6,11 +6,6 @@ import org.parceler.Parcel;
 
 import java.util.Date;
 
-import br.com.dreambox.api.DreamboxApi;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-
 @Parcel
 public class Dreamer {
 
@@ -100,30 +95,18 @@ public class Dreamer {
         this.email = email;
     }
 
-    public void nameFromJson(long dreamer) {
-        DreamboxApi.get().getDreamer(dreamer, new Callback<JsonObject>() {
-            @Override
-            public void success(JsonObject jsonObject, Response response) {
-                String n = jsonObject.get("name").getAsString();
-                nameLess(n);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                System.out.println("Deu erro de get dentro da classe Dreamer");
-            }
-        });
-    }
-
-    private void nameLess(String n) {
-        this.name = n;
-    }
-
     public long getCode() {
         return code;
     }
 
     public void setCode(long code) {
         this.code = code;
+    }
+
+    public static Dreamer fromJson(JsonObject json) {
+        Dreamer dreamer = new Dreamer();
+        dreamer.name = json.get("name").getAsString();
+
+        return dreamer;
     }
 }

@@ -33,7 +33,8 @@
         <activity
             android:name=".activity.ProfileActivity"
             android:label="@string/title_activity_profile" />
-        <activity android:name=".activity.DreamerActivity"></activity>
+        <activity android:name=".activity.DreamerActivity" />
+
         <activity
             android:name=".activity.DreamDetail"
             android:label="@string/title_activity_dream_detail" />

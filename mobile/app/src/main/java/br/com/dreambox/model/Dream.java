@@ -35,7 +35,7 @@ public class Dream {
     public static Dream fromJson(JsonObject obj) {
         Dream dream = new Dream();
 
-        dream.dreamer.nameFromJson(obj.get("dreamer").getAsLong());
+        dream.dreamer = Dreamer.fromJson(obj.get("dreamer").getAsJsonObject());
         dream.title = obj.get("name_search").getAsString();
         dream.description = obj.get("description").getAsString();
         dream.creationDate = null;
