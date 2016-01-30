@@ -1,4 +1,4 @@
-package br.com.dreambox.dreambox;
+package br.com.dreambox;
 
 import org.junit.Test;
 

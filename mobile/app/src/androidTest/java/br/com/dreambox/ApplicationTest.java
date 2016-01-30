@@ -1,4 +1,4 @@
-package br.com.dreambox.dreambox;
+package br.com.dreambox;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
