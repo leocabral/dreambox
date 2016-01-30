@@ -5,6 +5,7 @@ import webapp2
 from google.appengine.ext import ndb
 from google.appengine.ext import db
 from lib import ndb_json
+from models.dreamers import Dreamers
 
 class Dreams(ndb.Model):
 	name = ndb.StringProperty()
@@ -94,7 +95,14 @@ class DreamsAPI(webapp2.RequestHandler):
 
 	def random(self):
 		self.response.headers['Content-Type'] = 'application/json'
-		self.response.out.write(ndb_json.dumps(Dreams.random()))
+		random_dream = Dreams.random()
+		dream = ndb_json.loads(ndb_json.dumps(random_dream))
+
+		dreamer = Dreamers.find(random_dream.dreamer)
+		dream['dreamer'] = ndb_json.loads(ndb_json.dumps(dreamer))
+		del dream['dreamer']['password']
+
+		self.response.out.write(ndb_json.dumps(dream))
 
 	def put(self, dream_id):
 		Dreams.update(int(dream_id), Dreams(name = self.request.get('name'), description = self.request.get('description'), tags = json.loads(self.request.get('tags'))))
