@@ -295,6 +295,9 @@ ul.share-buttons img{
 .confirmation-button:disabled {
 	background-color: #9E9E9E;
 }
+.confirmation-button.create {
+    transform: scale(0.2);
+}
 .confirmation-button.follow {
     margin-top: 0px;
     position: relative;
@@ -302,13 +305,14 @@ ul.share-buttons img{
     width: 32px;
     height: 32px;
     left: 0;
+    top: 0;
 }
 
 .buttons {
 	left: 210%;
 	top: 180%;
 	display: flex;
-	position: relative;
+	position: absolute;
 }
 
 

@@ -106,8 +106,8 @@ var Cloud = (function() {
 					'-o-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
 					'animation' : 'moveclouds ' + moveSpeed + 's linear infinite'
 				});
-			    Cloud.bind();
 			}
+			bind();
 		},
 
 		createSigninPopup : function() {
