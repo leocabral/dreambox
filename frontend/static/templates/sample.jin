@@ -45,6 +45,7 @@
 	<script src="js/doT.min.js"></script>
 	<script src="js/grass.js"></script>
 	<script src="js/user.js"></script>
+	<script src="js/dream.js"></script>
 	<script src="js/cloud.js"></script>
 	<script src="js/main.js"></script>
 {% endblock %}

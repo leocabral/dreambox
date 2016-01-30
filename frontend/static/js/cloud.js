@@ -57,7 +57,7 @@ var Cloud = (function() {
 		'bind' : function() {
 			$('#clouds').on('click', '> div', function(e) {
 				var cloud = $(this);
-				$.getJSON('/api/dreams/random').success(function(dream) {
+				Dream.service.findRandom(function(dream) {
 					Cloud.open(cloud, dream);
 				});
 			    e.stopPropagation();
@@ -67,13 +67,9 @@ var Cloud = (function() {
 		'bindFollow' : function() {
 			$('.follow').unbind('click').click(function() {
 				var button = $(this);
-				var id = button.data('id');
-				$.ajax({
-					type: 'PUT',
-					url: 'api/dreams/' + id + '/add_follower?helper=' + Helper.id()
-				}).done(function() {
-				    button.prop('disabled', true);
-		        });
+				Dream.service.follow(button.data('id'), function() {
+					button.prop('disabled', true);
+				});
 			});
 		}
 	};
