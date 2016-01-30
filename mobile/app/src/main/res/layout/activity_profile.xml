@@ -19,11 +19,32 @@
         app:layout_widthPercent="45%" />
 
     <TextView
+        android:id="@+id/user_nickname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/img_avatar"
         android:gravity="center"
         android:text="Leonardo Sibela"
+        android:textColor="@android:color/black"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/user_location_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_nickname"
+        android:gravity="center"
+        android:text="7 anos, Mogi Guaçu - SP"
+        android:textColor="@android:color/black"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/user_foundation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_location_age"
+        android:gravity="center"
+        android:text="Instituição do User"
         android:textColor="@android:color/black"
         android:textSize="22sp" />
 

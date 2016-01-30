@@ -336,6 +336,7 @@ $('img.robot').unbind('click').click(function(e) {
 
 $(document).on('click',function() {
     $('.thinking').fadeOut();
+    $('.active-cloud').removeClass('active-cloud').html('');
 });
 
 var clouds = 0;
@@ -370,7 +371,7 @@ buildCreator(800);
 buildCreator(1000);
 buildCreator(1200);
 
-$('#clouds').on('click', '> div', function() {
+$('#clouds').on('click', '> div', function(e) {
 	var dream = {
 			'avatar' : 'avatar.png',
 			'title' : 'Dream title',
@@ -383,4 +384,5 @@ $('#clouds').on('click', '> div', function() {
 			cloud.html(doT.template(template)(dream));
 		});
 //	});
+    e.stopPropagation();
 });

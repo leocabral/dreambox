@@ -1,18 +1,14 @@
 package br.com.dreambox.activity;
 
-import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-
 import br.com.dreambox.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class DreamDetail extends AppCompatActivity {
 
