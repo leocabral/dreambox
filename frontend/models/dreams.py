@@ -51,7 +51,7 @@ class DreamsAPI(webapp2.RequestHandler):
         self.response.out.write(ndb_json.dumps(Dreams.search_by_name(term)))
 
     def list_by_dreamer(self, dreamer_id):
-        self.response.out.write(ndb_json.dumps(Dreams.of(dreamer_id)))
+        self.response.out.write(ndb_json.dumps(Dreams.of(int(dreamer_id))))
 
     def random(self):
         self.response.out.write(ndb_json.dumps(Dreams.random()))
