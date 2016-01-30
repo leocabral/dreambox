@@ -85,55 +85,58 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupSearchBox() {
-
-        ProgressBar pb = (ProgressBar) findViewById(R.id.loading);
-        pb.setVisibility(ProgressBar.VISIBLE);
-
-        DreamboxApi.get().dreams(new Callback<JsonArray>() {
-            @Override
-            public void success(JsonArray jsonElements, Response response) {
-                for (int x = 0; x < jsonElements.size(); x++) {
-                    // linha abaixo adiciona sugestões da busca baseado no que já foi digitado
-                    JsonObject obj = (JsonObject) jsonElements.getAsJsonArray().get(x);
-                    String title = obj.get("name_search").getAsString();
-                    String descr = obj.get("description").getAsString();
-                    Dream d = new Dream(title, descr);
-                    d.setId(obj.get("id").getAsLong());
-                    try {
-                        d.fromJson(obj);
-                        dreams.add(d);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    SearchResult option = new SearchResult(title, getResources().getDrawable(R.drawable.ic_clear));
-                    search.addSearchable(option);
-                }
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Toast.makeText(MainActivity.this, "API GET got wrong ;-;", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        pb.setVisibility(ProgressBar.INVISIBLE);
-
         search.enableVoiceRecognition(this);
+        search.setHint(getString(R.string.dream_search));
+
+        for (int x = 0; x < 10; x++) {
+            // linha abaixo adiciona sugestões da busca baseado no que já foi digitado
+            SearchResult option = new SearchResult("Result " + Integer.toString(x), getResources().getDrawable(R.drawable.ic_clear));
+            search.addSearchable(option);
+        }
         search.setSearchListener(new SearchListener() {
             @Override
-            public void onSearchOpened() {}
+            public void onSearchOpened() {
+            }
 
             @Override
             public void onSearchClosed() {// quando a aba de possíveis respostas fecha
             }
 
             @Override
-            public void onSearchTermChanged(String searchTerm) {//toda vez que uma letra mudar e consequentemente alterar as sugestões de busca
+            public void onSearchTermChanged(String searchTerm) {
+                DreamboxApi.get().dreams(new Callback<JsonArray>() {
+                    @Override
+                    public void success(JsonArray jsonElements, Response response) {
+                        //Toast.makeText(MainActivity.this, jsonElements.toString(), Toast.LENGTH_LONG).show();
+                        for (int x = 0; x < jsonElements.size(); x++) {
+                            // linha abaixo adiciona sugestões da busca baseado no que já foi digitado
+                            JsonObject obj = (JsonObject) jsonElements.getAsJsonArray().get(x);
+                            String title = obj.get("name_search").getAsString();
+                            String descr = obj.get("description").getAsString();
+                            Dream d = new Dream(title, descr);
+                            d.setId(obj.get("id").getAsInt());
+                            try {
+                                d.fromJson(obj);
+                                MainActivity.this.dreams.add(d);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                            SearchResult option = new SearchResult(title, getResources().getDrawable(R.drawable.ic_clear));
+                            search.addSearchable(option);
+                        }
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Toast.makeText(MainActivity.this, "API GET got wrong ;-;", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
             @Override
-            public void onSearch(String searchTerm) {}
+            public void onSearch(String searchTerm) {
+            }
 
             @Override
             public void onResultClick(final SearchResult result) {
@@ -141,9 +144,9 @@ public class MainActivity extends AppCompatActivity {
                 if (currentDream == null) {
                     mProgressBar.setVisibility(ProgressBar.VISIBLE);
 
-                    for(Dream d : MainActivity.this.dreams)
+                    for (Dream d : MainActivity.this.dreams)
                         if (d.getTitle().equalsIgnoreCase(result.toString().trim())) {
-                            cd.fillFields(d);
+//                            cd.fillFields(d);
                             break;
                         }
 
@@ -206,9 +209,9 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
 
                 switch (item.getItemId()) {
-                    case R.id.item_1:
+                    case R.id.home_item:
                         return true;
-                    case R.id.item_2:
+                    case R.id.fulfilled_dreams_item:
                         return true;
                     default:
                         return true;
@@ -326,12 +329,12 @@ public class MainActivity extends AppCompatActivity {
         @OnClick(R.id.share_button)
         public void shareClick() {
             ///* Código para Compartilhar a url de um sonho a partir de ser ID
-                String url = "http://caixa-de-sonhos.appspot.com";//api/dreams/5634472569470976";
-                Intent i = new Intent();
-                i.setAction(Intent.ACTION_SEND);
-                i.putExtra(Intent.EXTRA_TEXT, url);
-                i.setType("text/plain");
-                startActivity(Intent.createChooser(i, "Compartilhe esse sonho!!"));
+            String url = "http://caixa-de-sonhos.appspot.com";//api/dreams/5634472569470976";
+            Intent i = new Intent();
+            i.setAction(Intent.ACTION_SEND);
+            i.putExtra(Intent.EXTRA_TEXT, url);
+            i.setType("text/plain");
+            startActivity(Intent.createChooser(i, "Compartilhe esse sonho!!"));
             // */
         }
     }
@@ -344,4 +347,5 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onBackPressed();
     }
+
 }

@@ -35,4 +35,8 @@
     <string name="title_dreamer">Cadastrado de sonhador</string>
     <string name="dreams">Sonhos</string>
     <string name="home">Home</string>
+    <string name="fulfilled_dreams">Sonhos realizados</string>
+    <string name="sign_in">Logar</string>
+    <string name="new_dream">Novo sonho</string>
+    <string name="dream_search">Busque um sonho</string>
 </resources>
