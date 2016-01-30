@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="default_activity_margin">16dp</dimen>
+    <dimen name="avatar_margin">25dp</dimen>
     <dimen name="edit_margin">30dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 </resources>
