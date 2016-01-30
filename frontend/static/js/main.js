@@ -397,14 +397,10 @@ var openCloud = function(cloud, html) {
 var bindClouds = function() {
 	$('#clouds').on('click', '> div', function(e) {
 		var cloud = $(this);
-		$.ajax({
-		    type: 'GET',
-		    url: '/api/dreams/random',
-		    success: function(dream) {
-		    	$.get('templates/opened-dream.html').done(function(template) {
-		    		openCloud(cloud, doT.template(template)(dream));
-		    	});
-			}
+		$.getJSON('/api/dreams/random').success(function(dream) {
+	    	$.get('templates/opened-dream.html').done(function(template) {
+	    		openCloud(cloud, doT.template(template)(dream));
+	    	});
 		});
 	    e.stopPropagation();
 	});
@@ -446,17 +442,11 @@ if (params) {
 	var entry = params.split('=');
 	if (entry[0] == '?id') {
 		var id = entry[1].replace('/', "");
-		var dream = {
-				'id' : '1234',
-				'avatar' : '/img/avatar.png',
-				'title' : 'Dream title',
-				'description' : 'Sempre sonhei em ser HU3HU3HU3HU3BRBR'
-		};
-		var cloud = $(".cloud:eq(0)");
-//		$.getJSON('/api/dream/' + id).done(function(dream) {
-			$.get('opened-dream.html').done(function(template) {
+		var cloud = $(".cloud:eq(1)");
+		$.getJSON('/api/dreams/' + id).done(function(dream) {
+			$.get('/templates/opened-dream.html').done(function(template) {
 				openCloud(cloud, doT.template(template)(dream));
 			});
-//		});
+		});
 	}
 }

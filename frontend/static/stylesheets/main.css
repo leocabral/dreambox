@@ -63,7 +63,6 @@ ul.share-buttons img{
 
 .cloud.active-cloud {
 	top: 410px !important;
-	
 	opacity: 1 !important;
 	z-index: 1;
 	-webkit-transform: scale(5) !important;
@@ -236,7 +235,6 @@ background-color: #fff;
     
 }
 .active-cloud .opened-dream {
-    display: inline-block;
 	width: 100%;
 	height: 100%;
 	top: -30%;
