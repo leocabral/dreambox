@@ -364,6 +364,7 @@ var buildCreator = function (interval) {
 buildCreator(800);
 buildCreator(1000);
 buildCreator(1200);
-$('#clouds > div').unbind('click').click(function() {
-	
+
+$('#clouds').on('click', '> div', function() {
+	$(this).addClass('active-cloud');
 });
