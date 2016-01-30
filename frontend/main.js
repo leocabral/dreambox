@@ -379,6 +379,18 @@ var openCloud = function(cloud, html) {
 	});
 	cloud.addClass('active-cloud');
 	cloud.html(html);
+
+	$('.follow').unbind('click').click(function() {
+		var button = $(this);
+		var id = button.data('id');
+//		$.ajax({
+//			method: 'PUT',
+//			url: 'some.php',
+//			data: { 'id' : id }
+//		}).done(function() {
+		    button.prop('disabled', true);
+//        });
+	});
 	unbindClouds();
 };
 
@@ -417,7 +429,7 @@ $('#meu-perfil').unbind('click').click(function(e) {
 });
 
 $(document).on('click',function(e) {
-	if(!$(e.target).hasClass('active-cloud')) {
+	if($(e.target).parents('.active-cloud').length <= 0) {
 		var moveSpeed = Math.floor((Math.random() * 3) + 6) * 3;
 		$('.active-cloud').removeClass('active-cloud').html('').css({
 			'-webkit-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
