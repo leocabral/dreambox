@@ -26,6 +26,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_activity_margin"
+        android:hint="@string/email_field" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:paddingTop="@dimen/edit_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_activity_margin"
         android:hint="@string/password_field" />
 
     <android.support.v7.widget.AppCompatEditText

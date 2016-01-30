@@ -22,10 +22,10 @@
         android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:text="Título: "
-        android:textSize="24dp"/>
+        android:textSize="@dimen/title_text_dream_detail"/>
 
     <TextView
-        android:textSize="21dp"
+        android:textSize="@dimen/text_dream_detail"
         android:layout_marginLeft="21dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,10 +44,10 @@
         android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:text="Descrição: "
-        android:textSize="24dp"/>
+        android:textSize="@dimen/title_text_dream_detail"/>
 
     <TextView
-        android:textSize="21dp"
+        android:textSize="@dimen/text_dream_detail"
         android:layout_marginLeft="21dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,10 +65,10 @@
         android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:text="Sonhador: "
-        android:textSize="24dp"/>
+        android:textSize="@dimen/title_text_dream_detail"/>
 
     <TextView
-        android:textSize="21dp"
+        android:textSize="@dimen/text_dream_detail"
         android:layout_marginLeft="21dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
