@@ -329,8 +329,9 @@ window.addEventListener(
 
 
 
-$('img.robot').unbind('click').click(function() {
-	console.info('aeho');
+$('img.robot').unbind('click').click(function(e) {
+    $('.thinking').fadeIn();
+    e.stopPropagation();
 });
 
 var clouds = 0;
@@ -365,7 +366,35 @@ buildCreator(800);
 buildCreator(1000);
 buildCreator(1200);
 
-$('#clouds').on('click', '> div', function() {
-	$(this).addClass('active-cloud');
-	$(this).html('<div class="opened-dream">Sempre sonhei em ser HU3HU3BR</div>');
+var bindClouds = function() {
+	$('#clouds').unbind("click").on('click', '> div', function(e) {
+		var dream = {
+				'avatar' : 'avatar.png',
+				'title' : 'Dream title',
+				'description' : 'Sempre sonhei em ser HU3HU3HU3HU3BRBR'
+		};
+		var cloud = $(this);
+//		$.getJSON('/api/blah').done(function(dream) {
+			$.get('/template/opened-dream.html').done(function(template) {
+				cloud.addClass('active-cloud');
+				cloud.html(doT.template(template)(dream));
+			});
+//		});
+		unbindClouds();
+	    e.stopPropagation();
+	});
+};
+var unbindClouds = function() {
+	$('#clouds').unbind("click");
+}
+
+$(document).on('click',function(e) {
+	if(!$(e.target).hasClass('active-cloud')) {
+		$('.active-cloud').removeClass('active-cloud').html('');
+	    bindClouds();
+	}
+    $('.thinking').fadeOut();
 });
+
+bindClouds();
+

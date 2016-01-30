@@ -7,14 +7,23 @@ import android.widget.Toast;
 import com.quinny898.library.persistentsearch.SearchBox;
 import com.quinny898.library.persistentsearch.SearchBox.SearchListener;
 import com.quinny898.library.persistentsearch.SearchResult;
+import android.view.View;
 
 import br.com.dreambox.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.search_box)
     public SearchBox search;
+
+    @Bind(R.id.target_clouds_tutorial)
+    View mClouds;
+
+    @Bind(R.id.robot)
+    View mRobot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setupSearchBox();
+        showTutorialScreen();
     }
 
     public void setupSearchBox() {
@@ -31,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             SearchResult option = new SearchResult("Result " + Integer.toString(x), getResources().getDrawable(R.drawable.ic_clear));
             search.addSearchable(option);
         }
-        search.setSearchListener(new SearchListener(){
+        search.setSearchListener(new SearchListener() {
 
             @Override
             public void onSearchOpened() {
@@ -46,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSearchTermChanged(String searchTerm) {
-                Toast.makeText(MainActivity.this, searchTerm +"onSearchTermChanged", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, searchTerm + "onSearchTermChanged", Toast.LENGTH_LONG).show();
             }
 
 
             @Override
             public void onSearch(String searchTerm) {
-                Toast.makeText(MainActivity.this, searchTerm +" Searched", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, searchTerm + " Searched", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -66,5 +76,21 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+    }
+
+    private void showTutorialScreen() {
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500);
+
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this);
+        sequence.setConfig(config);
+
+        String gotIt = getString(R.string.got_it);
+
+        sequence.addSequenceItem(mClouds, getString(R.string.clouds_instruction), gotIt);
+        sequence.addSequenceItem(mRobot, getString(R.string.robot_instruction), gotIt);
+
+        sequence.start();
     }
 }
