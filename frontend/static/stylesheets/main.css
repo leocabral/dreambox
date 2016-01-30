@@ -13,6 +13,8 @@ body {
 canvas {
 	position: absolute;
 	top: 0;
+	height: 100vh;
+	width: 100vw;
 }
 
 img {
@@ -32,22 +34,56 @@ img {
 
 /*Time to finalise the cloud shape*/
 .cloud {
+    margin-left: 0;
 	width: 200px; height: 60px;
 	background: #fff;
 	
 	border-radius: 200px;
 	-moz-border-radius: 200px;
 	-webkit-border-radius: 200px;
-	
+	left: 0;
 	position: absolute; 
+	transition: left 1s linear, transform 1s linear, top 1s linear, opacity 1s linear;
 }
 
-.cloud:before, .cloud:after {
+.cloud.active-cloud {
+	top: 410px !important;
+	
+	opacity: 1 !important;
+	z-index: 1;
+	-webkit-transform: scale(5) !important;
+	-moz-transform: scale(5) !important;
+	transform:scale(5) !important;
+	
+}
+
+.robot {
+    cursor:pointer;
+}
+.thinking {
+    bottom: 0;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    width: 250px;
+    z-index: 9999;
+    display: none;
+}
+.thinking ul li {
+	width: 200px; height: 60px;
+	background: #fff;
+	
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+}
+.cloud:before, .cloud:after, .thinking ul li:after, .thinking ul li:before {
 	content: '';
 	position: absolute; 
 	background: #fff;
 	width: 100px; height: 80px;
 	position: absolute; top: -15px; left: 10px;
+	z-index: -1;
 	
 	border-radius: 100px;
 	-moz-border-radius: 100px;
@@ -58,32 +94,173 @@ img {
 	-moz-transform: rotate(30deg);
 }
 
-.cloud:after {
+.cloud:after, .thinking ul li:after{
 	width: 120px; height: 120px;
 	top: -55px; left: auto; right: 15px;
 }
 
+
+
 @-webkit-keyframes moveclouds {
-	0% {margin-left: 100%;}
-	100% {margin-left: -100%;}
+	0% {left: 100%;}
+	100% {left: -100%;}
 }
 @-moz-keyframes moveclouds {
-	0% {margin-left: 100%;}
-	100% {margin-left: -100%;}
+	0% {left: 100%;}
+	100% {left: -100%;}
 }
 @-o-keyframes moveclouds {
-	0% {margin-left: 100%;}
-	100% {margin-left: -100%;}
+	0% {left: 100%;}
+	100% {left: -100%;}
 }
 .search {
 	position: absolute;
 }
-.clouds {
+
+.x2 .first-ball, .x2 .second-ball {
+    background-color: white;
+    border-radius: 30px;
+    height: 30px;
+    margin-left: 130px;
+    margin-top: 30px;
+    width: 30px;
+}
+.x2 .second-ball {
+    height: 15px;
+    margin-left: 168px;
+    width: 15px;
+    margin-top: 10px;
+}
+.x3 .first-ball, x3.second-ball {
+    background-color: white;
+    border-radius: 30px;
+    height: 30px;
+    margin-left: 130px;
+    margin-top: 20px;
+    width: 30px;
+    
+    position: absolute;
+    left: 90px;
+    top: 8px;
+}
+.x3 .second-ball {
+background-color: #fff;
+    border-radius: 10px;
+    height: 15px;
+    margin-left: 264px;
+    width: 15px;
+}
+
+#new-cloud {
+    opacity: 0;
+    transition: opacity 1s linear;
+}
+#new-cloud.active-cloud {
+    opacity: 1;
+    left: 800px;
+}
+.with-hover:hover:after,
+.with-hover:hover:before,
+.with-hover:hover,
+.with-hover:hover .first-ball,
+.with-hover:hover .second-ball{
+    background: #DDD none repeat scroll 0 0
+}
+.with-hover {
+    cursor:pointer;
+    
+}
+.x2 {
+	left: 0px;
+	
+	-webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+	transform: scale(0.6);
+	opacity: 1; /*opacity proportional to the size*/
+}
+
+.x2 .opened-dream {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 11px auto 0;
+    width: 87%;
+    
+}
+
+.x3 {
+    top: 82px;
+	left: -80px;
+	
+	-webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+	transform: scale(0.6);
+	opacity: 1; /*opacity proportional to the size*/
+}
+
+.x3 .opened-dream {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 11px auto 0;
+    width: 77%;
+    
+}
+
+#new-cloud input {
+    width: 470px;
+}
+
+#new-cloud textarea {
+    height: 200px;
+    width: 470px;
+    margin-top: -100px;
+}
+
+.opened-dream.normal-font {
+    -webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	transform:scale(1);
+    
+}
+.active-cloud .opened-dream {
+    display: inline-block;
+	width: 100%;
+	height: 100%;
+	top: -30%;
+}
+.opened-dream {
+    position: relative;
+	-webkit-transform: scale(0.2);
+	-moz-transform: scale(0.2);
+	transform:scale(0.2);
 	
 }
-.grass {
-	
+
+.dreamer-avatar {
+	left: -130%;
 }
-.character {
-	
+
+.dream-title {
+	position: relative;
+	top: -170%;
+	font-size: 3em;
+	font-weight: bold;
+    width: 480px;
+}
+
+
+.confirmation-button:hover {
+    background-color: #363;
+}
+.confirmation-button {
+    outline: 0;
+    cursor: pointer;
+background-color: #474;
+    border: 0 none;
+    border-radius: 3px;
+    color: #000;
+    left: 422px;
+    margin-top: 10px;
+    padding: 5px;
+    position: absolute;
+    right: 0;
 }

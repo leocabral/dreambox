@@ -368,13 +368,8 @@ buildCreator(1200);
 
 var bindClouds = function() {
 	$('#clouds').on('click', '> div', function(e) {
-		var dream = {
-				'avatar' : 'avatar.png',
-				'title' : 'Dream title',
-				'description' : 'Sempre sonhei em ser HU3HU3HU3HU3BRBR'
-		};
 		var cloud = $(this);
-//		$.getJSON('/api/blah').done(function(dream) {
+		$.getJSON('/api/dreams/random').done(function(dream) {
 			$.get('/template/opened-dream.html').done(function(template) {
 				cloud.animate({
 					left : ($(window).width()/2-$(cloud).width()/2)+'px',
@@ -389,7 +384,7 @@ var bindClouds = function() {
 				cloud.html(doT.template(template)(dream));
 				
 			});
-//		});
+		});
 		unbindClouds();
 	    e.stopPropagation();
 	});
@@ -427,3 +422,10 @@ $(document).on('click',function(e) {
 
 bindClouds();
 
+$('#salvar-sonho').unbind('click').click(function() {
+    $.post('/api/dreams',{
+       name: $('#titulo-sonho').val(),
+        description: $('#descricao-sonho').val(),
+        dreamer: 5639445604728832
+    });
+})
