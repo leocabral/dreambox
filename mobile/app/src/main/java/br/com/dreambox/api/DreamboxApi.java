@@ -6,6 +6,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import com.squareup.okhttp.OkHttpClient;
+
+import java.util.Date;
+
 import retrofit.client.OkClient;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -13,7 +16,6 @@ import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
-import retrofit.http.PUT;
 import retrofit.http.Path;
 
 public class DreamboxApi {
@@ -36,7 +38,7 @@ public class DreamboxApi {
                       @Field("description") String description, @Field("dreamer") long dreamer, Callback<JsonObject> response);
 
         @GET("/api/dreams/random")
-        void getRandomDream(Callback<JsonArray> response);
+        void getRandomDream(Callback<JsonObject> response);
 
         @GET("/api/dreams/search/{term}")
         void getSearchDream(@Path("term") String term, Callback<JsonArray> response);
@@ -53,7 +55,7 @@ public class DreamboxApi {
         @POST("/api/dreamers")
         @FormUrlEncoded
         void addDreamer(@Field("name") String title, @Field("last_name") String lastName,
-                        @Field("birthday") String birthday, @Field("nickname") String nickname,
+                        @Field("birthday") Date birthday, @Field("nickname") String nickname,
                         @Field("password") String password, @Field("email") String email,
                         @Field("organization") String organization, Callback<JsonObject> response);
 

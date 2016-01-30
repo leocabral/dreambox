@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:tools="http://schemas.android.com/tools"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="@layout/activity_profile">
 
     <com.mikhaellopez.circularimageview.CircularImageView
@@ -9,7 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/avatar_margin"
         android:src="@drawable/avatar_4"
         app:layout_heightPercent="45%"
         app:layout_widthPercent="45%" />
@@ -20,7 +19,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/img_avatar"
         android:gravity="center"
-        android:text="Leonardo Sibela"
+        android:textColor="@android:color/black"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/user_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_nickname"
+        android:gravity="center"
         android:textColor="@android:color/black"
         android:textSize="22sp" />
 
@@ -28,9 +35,8 @@
         android:id="@+id/user_location_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/user_nickname"
+        android:layout_below="@id/user_mail"
         android:gravity="center"
-        android:text="7 anos, Mogi Guaçu - SP"
         android:textColor="@android:color/black"
         android:textSize="22sp" />
 
@@ -40,33 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/user_location_age"
         android:gravity="center"
-        android:text="Instituição do User"
         android:textColor="@android:color/black"
         android:textSize="22sp" />
 
-    <RelativeLayout
-        android:id="@+id/fab_area"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/user_foundation">
-
-        <View
-            android:id="@+id/lineDivider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="16dp"
-            android:background="@layout/gradient" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="15dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/ic_create_white_48dp" />
-
-    </RelativeLayout>
 </merge>

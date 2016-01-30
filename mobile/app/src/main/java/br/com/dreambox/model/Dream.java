@@ -20,6 +20,10 @@ public class Dream {
         this.description = description;
     }
 
+    public Dream() {
+
+    }
+
     public String getTitle() {
         return title;
     }
