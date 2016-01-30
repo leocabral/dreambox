@@ -1,34 +1,27 @@
 package br.com.dreambox.model;
 
-import android.app.Application;
-import android.util.Log;
-import android.widget.Toast;
-
 import com.google.gson.JsonObject;
 
-import java.math.BigInteger;
+import org.parceler.Parcel;
 
-import br.com.dreambox.api.DreamboxApi;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 import java.util.Date;
 
+@Parcel
 public class Dreamer {
 
+    int code;
+    String name;
+    String city;
+    String state;
+    String foundation;
+    Date birthday;
+    String lastName;
+    String nickname;
+    String password;
+    String email;
 
-    private long code;
-    private String name;
-    private Integer age;
-    private String city;
-    private String state;
-    private String foundation;
-    private Date birthday;
-    private String lastName;
-    private String nickname;
-    private String password;
-    private String email;
-
+    public Dreamer() {
+    }
 
     public String getName() {
         return name;
@@ -44,14 +37,6 @@ public class Dreamer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     public String getCity() {
@@ -110,30 +95,18 @@ public class Dreamer {
         this.email = email;
     }
 
-    public void nameFromJson(long dreamer) {
-        DreamboxApi.get().getDreamer(dreamer, new Callback<JsonObject>() {
-            @Override
-            public void success(JsonObject jsonObject, Response response) {
-                String n = jsonObject.get("name").getAsString(); //+ " " + jsonObject.get("last_name").getAsString();
-                nameLess(n);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                System.out.println("DEu erro de get dentro da classe Dreamer");
-            }
-        });
-    }
-
-    private void nameLess(String n) {
-        this.name = n;
-    }
-
-    public long getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(long code) {
+    public void setCode(int code) {
         this.code = code;
+    }
+
+    public static Dreamer fromJson(JsonObject json) {
+        Dreamer dreamer = new Dreamer();
+        dreamer.name = json.get("name").getAsString();
+
+        return dreamer;
     }
 }

@@ -22,6 +22,7 @@
     <string name="nickname_field">Apelido (será seu login no Dreambox)</string>
     <string name="password_field">Senha</string>
     <string name="dreamer_button">Torne-se um sonhador !!</string>
+    <string name="edit_dreamer_button">Alterar dados</string>
     <string name="organization_field">Sua organização</string>
     <string name="title_activity_dream_detail">DreamDetail</string>
     <string name="email_field">Seu Email</string>
@@ -33,6 +34,11 @@
     <string name="description_detail">Só uma pequena descrição lalalalalalaasldjasd asdjsaldjaslkdj laskdjsakl jaskldj asldkj salk js</string>
     <string name="last_name_field">Sobrenome</string>
     <string name="title_dreamer">Cadastrado de sonhador</string>
+    <string name="alter_dreamer_title">Alterar informações</string>
     <string name="dreams">Sonhos</string>
     <string name="home">Home</string>
+    <string name="fulfilled_dreams">Sonhos realizados</string>
+    <string name="sign_in">Logar</string>
+    <string name="new_dream">Novo sonho</string>
+    <string name="dream_search">Busque um sonho</string>
 </resources>

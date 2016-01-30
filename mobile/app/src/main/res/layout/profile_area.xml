@@ -14,10 +14,19 @@
         app:layout_widthPercent="45%" />
 
     <TextView
-        android:id="@+id/user_nickname"
+        android:id="@+id/user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/img_avatar"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/user_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_name"
         android:gravity="center"
         android:textColor="@android:color/black"
         android:textSize="22sp" />

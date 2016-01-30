@@ -1,10 +1,33 @@
 $('img.robot').unbind('click').click(function(e) {
+	if(Helper.isLogged()) {
+		$('#sign-in').hide();
+		$('#sign-up').hide();
+		$('#meu-perfil').show();
+		$('#novo-sonho').show();
+	} else {
+		$('#sign-in').show();
+		$('#sign-up').show();
+		$('#meu-perfil').hide();
+		$('#novo-sonho').hide();
+	}
     $('.thinking').fadeIn();
     e.stopPropagation();
 });
 
 $('#meu-perfil').unbind('click').click(function(e) {
     e.stopPropagation();
+});
+
+$('#sign-up').unbind('click').click(function(e){
+	e.stopPropagation();
+	$('.thinking').fadeOut();
+	Cloud.createSignupPopup();
+});
+
+$('#sign-in').unbind('click').click(function(e){
+	e.stopPropagation();
+	$('.thinking').fadeOut();
+	Cloud.createSigninPopup();
 });
 
 Cloud.buildCreator(800);

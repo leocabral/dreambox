@@ -1,8 +1,10 @@
 {% autoescape true %}
-<html>
+<html ng-app="dream-box">
 	<head>
 		<!-- you may add some css here -->
 		<link type="text/css" rel="stylesheet" href="stylesheets/main.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+		<script src="js/module.js"></script>
 		{% block head %}{% endblock %}
 	</head>
 	<body>

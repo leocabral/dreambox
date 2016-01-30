@@ -16,6 +16,7 @@ import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.PUT;
 import retrofit.http.Path;
 
 public class DreamboxApi {
@@ -25,6 +26,13 @@ public class DreamboxApi {
     private static Dreambox dreambox;
 
     public interface Dreambox {
+
+        @PUT("/api/dreamers/{dreamerId}")
+        @FormUrlEncoded
+        void putDreamer(@Path("dreamerId") int dreamerId, @Field("name") String name,
+                        @Field("last_name") String lastName, @Field("nickname") String nickname,
+                        @Field("email") String email, @Field("organization") String organization,
+                        Callback<JsonObject> response);
 
         @GET("/api/dreams")
         void dreams(Callback<JsonArray> response);
