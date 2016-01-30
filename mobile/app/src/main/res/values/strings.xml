@@ -10,4 +10,5 @@
     <string name="surname">Sobrenome</string>
     <string name="email">Email</string>
     <string name="sign_up">cadastrar</string>
+    <string name="title_activity_home">Home</string>
 </resources>
