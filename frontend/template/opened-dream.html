@@ -2,5 +2,12 @@
 	<img src="{{=it.avatar}}" class="dreamer-avatar" />
 	<div class="dream-title">{{=it.title}}</div>
 	{{=it.description}}
-	<div class="follow-dream"></div>
+	<div class="buttons">
+		<input type="button" class="follow" data-id={{=it.id}} value = "<3"/>
+		<ul class="share-buttons">
+  			<li>
+  				<a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:8181/?id={{=it.id}}&t=DreamBox" title="Share on Facebook" target="_blank"><img src="Facebook.svg"></a>
+ 			</li>
+		</ul>
+	</div>
 </div>

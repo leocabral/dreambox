@@ -6,13 +6,22 @@
 	<div class="search">
 		<input type="text" />
 	</div>
-	<div id="clouds"></div>
+	<div id="clouds">
+        <div class="cloud" id="new-cloud">
+            <div class="opened-dream">
+			 <img src="avatar.png" class="dreamer-avatar" />
+			 <div class="dream-title"><input type="text" placeholder="Titulo do sonho"/></div>
+			 <textarea class="textarea-dream"></textarea>
+                <button type="button" class="confirmation-button">Criar</button>
+			</div>
+        </div>
+    </div>
 	<div class="grass">
 		<img src="robot.png" class="robot" />
 		<canvas id='s'>This application requires a (fast) HTML5 compliant browser.</canvas>
 	</div>
     <div class="thinking">
-        <div class="cloud x2 with-hover">
+        <div class="cloud x2 with-hover" id="novo-sonho">
             <div class="opened-dream normal-font">
                 Novo Sonho
             </div>
@@ -21,7 +30,7 @@
             <div class="second-ball">
             </div>
         </div>
-        <div class="cloud x3 with-hover">
+        <div class="cloud x3 with-hover"  id="meu-perfil">
             <div class="opened-dream normal-font">
                 Meu Perfil
             </div>
