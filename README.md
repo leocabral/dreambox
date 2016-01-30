@@ -1,7 +1,8 @@
 # dreambox
 
-## Usuários dei **adim**
+## Usuários de **adim**
 
 O usuário de admin padrão é:
-**email**: *admin*
-**senha**: *dream-box-admin*
+
+- **email**: *admin*
+- **senha**: *dream-box-admin*
