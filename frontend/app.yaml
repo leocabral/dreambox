@@ -13,6 +13,11 @@ handlers:
 - url: /img
   static_dir: static/img
 
+- url: /(.*\.html)
+  mime_type: text/html
+  static_files: static/\1
+  upload: static/(.*\.html)
+
 - url: /.*
   script: dreambox.app
 

@@ -4,8 +4,8 @@ from models import *
 
 
 app = webapp2.WSGIApplication([
-    webapp2.Route('/', handler=MainPage, handler_method='home'),
-    webapp2.Route('/<:.+>', handler=MainPage, handler_method='get'),
+    webapp2.Route(r'/', handler=MainPage, handler_method='home'),
+    webapp2.Route(r'/<:.+\.html>', handler=MainPage, handler_method='get'),
     webapp2.Route(r'/api/dreams', handler=dreams.DreamsAPI, handler_method='list', methods=['GET']),
     webapp2.Route(r'/api/dreams', handler=dreams.DreamsAPI, handler_method='post', methods=['POST']),
     webapp2.Route(r'/api/dreams/random', handler=dreams.DreamsAPI, handler_method='random', methods=['GET']),
