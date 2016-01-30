@@ -16,7 +16,10 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
 
-	def get(self):
+        def home(self):
+            MainPage.get(self, 'sample.html')
+
+	def get(self, page):
 		template = JINJA_ENVIRONMENT.get_template('sample.html')
 
 		self.response.write(template.render())
