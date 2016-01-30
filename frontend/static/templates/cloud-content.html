@@ -1,0 +1,10 @@
+<div class="cloud-content">
+	{{? it.content}}
+		<img src="{{=it.content.avatar}}" class="cloud-avatar" />
+		<div class="cloud-title">{{=it.content.title}}</div>
+		<div class="cloud-description">{{=it.content.description}}</div>
+		<div class="buttons">{{=it.content.buttons}}</div>
+	{{??}}
+		<div class="cloud-error">Ocorreu um erro ao carregar essa nuvem :C</div>
+	{{?}}
+</div>
