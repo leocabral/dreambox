@@ -278,6 +278,18 @@ background-color: #fff;
     position: absolute;
     right: 0;
 }
+.confirmation-button:disabled {
+	background-color: #9E9E9E;
+}
+.confirmation-button.follow {
+    margin-top: 0px;
+    position: relative;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    left: 0;
+}
+
 .buttons {
 	left: 210%;
 	top: 180%;
