@@ -346,7 +346,7 @@ var createCloud = function () {
 		'transform' : 'scale(' + scale + ')',
 		'opacity' : scale,
 		'-webkit-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
-		'-moz-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
+		'moz-animation' : 'moveclouds ' + moveSpeed + 's linear infinite',
 		'-o-animation' : 'moveclouds ' + moveSpeed + 's linear infinite'
 	});
 	
@@ -364,7 +364,6 @@ var buildCreator = function (interval) {
 buildCreator(800);
 buildCreator(1000);
 buildCreator(1200);
-
-$('#clouds').on('click', '> div', function() {
-	$(this).addClass('active-cloud');
+$('#clouds > div').unbind('click').click(function() {
+	
 });

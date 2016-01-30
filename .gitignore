@@ -33,3 +33,5 @@ captures/
 node_modules
 *.pyc
 .idea
+*~
+*.swp
