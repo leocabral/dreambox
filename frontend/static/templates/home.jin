@@ -9,14 +9,6 @@
         <button type="button"><img src="/img/search.png"></button>
 	</div>
 	<div id="clouds">
-        <div class="cloud" id="new-cloud">
-            <div class="opened-dream">
-			 <img src="/img/avatar.png" class="dreamer-avatar" />
-			 <div class="dream-title"><input type="text" placeholder="Titulo do sonho"/></div>
-			 <textarea class="textarea-dream"></textarea>
-                <button type="button" class="confirmation-button">Criar</button>
-			</div>
-        </div>
     </div>
 	<div class="grass">
 		<img src="/img/robot.png" class="robot" />
@@ -24,7 +16,7 @@
 	</div>
     <div class="thinking">
         <div class="cloud x2 with-hover" id="novo-sonho">
-            <div class="opened-dream normal-font">
+            <div class="cloud-content normal-font">
                 Novo Sonho
             </div>
             <div class="first-ball">
@@ -33,7 +25,7 @@
             </div>
         </div>
         <div class="cloud x3 with-hover"  id="meu-perfil">
-            <div class="opened-dream normal-font">
+            <div class="cloud-content normal-font">
                 Meu Perfil
             </div>
             <div class="first-ball">
@@ -42,7 +34,7 @@
             </div>
         </div>
         <div class="cloud x2 with-hover" id="sign-in">
-            <div class="opened-dream normal-font">
+            <div class="cloud-content normal-font">
                 Entrar
             </div>
             <div class="first-ball">
@@ -51,7 +43,7 @@
             </div>
         </div>
         <div class="cloud x3 with-hover"  id="sign-up">
-            <div class="opened-dream normal-font">
+            <div class="cloud-content normal-font">
                 Cadastrar
             </div>
             <div class="first-ball">

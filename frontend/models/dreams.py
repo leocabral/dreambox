@@ -5,6 +5,7 @@ import webapp2
 from google.appengine.ext import ndb
 from google.appengine.ext import db
 from lib import ndb_json
+from models.dreamers import Dreamers
 
 class Dreams(ndb.Model):
 	name = ndb.StringProperty()
@@ -79,22 +80,39 @@ class DreamsAPI(webapp2.RequestHandler):
 		if self.request.method == 'PUT':
 			return DreamsAPI.put(self, dream_id)
 
+	def append_dreamer_on_response(self, response, dreamer_id):
+		dreamer = Dreamers.find(dreamer_id)
+		response['dreamer'] = ndb_json.loads(ndb_json.dumps(dreamer))
+		del response['dreamer']['password']
+		return response
 
 	def get(self, dream_id):
 		self.response.headers['Content-Type'] = 'application/json'
-		self.response.out.write(ndb_json.dumps(Dreams.find(int(dream_id))))
+		dream = Dreams.find(int(dream_id))
+		response = ndb_json.loads(ndb_json.dumps(dream))
+		response = self.append_dreamer_on_response(response, dream.dreamer)
+		self.response.out.write(ndb_json.dumps(response))
 
 	def search(self, term):
 		self.response.headers['Content-Type'] = 'application/json'
-		self.response.out.write(ndb_json.dumps(Dreams.search_by_name(term)))
+		dreams = Dreams.search_by_name(term)
+		response = []
+		for dream in dreams:
+			dream_json = ndb_json.loads(ndb_json.dumps(dream))
+			response.append(self.append_dreamer_on_response(dream_json, dream.dreamer))
 
+		self.response.out.write(ndb_json.dumps(response))
+		
 	def list_by_dreamer(self, dreamer_id):
 		self.response.headers['Content-Type'] = 'application/json'
 		self.response.out.write(ndb_json.dumps(Dreams.of(int(dreamer_id))))
 
 	def random(self):
 		self.response.headers['Content-Type'] = 'application/json'
-		self.response.out.write(ndb_json.dumps(Dreams.random()))
+		random_dream = Dreams.random()
+		dream = ndb_json.loads(ndb_json.dumps(random_dream))
+		response = self.append_dreamer_on_response(dream, random_dream.dreamer)
+		self.response.out.write(ndb_json.dumps(response))
 
 	def put(self, dream_id):
 		Dreams.update(int(dream_id), Dreams(name = self.request.get('name'), description = self.request.get('description'), tags = json.loads(self.request.get('tags'))))

@@ -9,7 +9,7 @@ import java.util.Date;
 @Parcel
 public class Dreamer {
 
-    long code;
+    int code;
     String name;
     String city;
     String state;
@@ -95,11 +95,11 @@ public class Dreamer {
         this.email = email;
     }
 
-    public long getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(long code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
