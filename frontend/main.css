@@ -157,6 +157,7 @@ background-color: #fff;
 }
 #new-cloud.active-cloud {
     opacity: 1;
+    left: 800px;
 }
 .with-hover:hover:after,
 .with-hover:hover:before,
