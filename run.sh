@@ -1,2 +1,1 @@
-cd web && python -m SimpleHTTPServer 1234
-
+~/google_appengine/dev_appserver.py --port=1234 web/
