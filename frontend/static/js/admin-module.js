@@ -129,11 +129,15 @@ dreamBoxAdmin.config(function($interpolateProvider){
 dreamBoxAdmin.factory('AuthenticationService', ['$http', '$cookieStore', '$rootScope', '$timeout', 
   function($http, $cookieStore, $rootScope, $timeout) {
     var service = {};
-
+    $rootScope.globals = $cookieStore.get('globals');
     service.Login = Login;
     service.SetCredentials = SetCredentials;
     service.ClearCredentials = ClearCredentials;
     service.HasCredentials = HasCredentials;
+    
+    $rootScope.isLogged = function() {
+      return service.HasCredentials();
+    };
 
     return service;
 

@@ -3,10 +3,6 @@ angular.module('dream-box-admin').controller('AdminUserController', ['$scope', '
 		
 	var vm = this;
 
-	vm.isLogged = function() {
-		return AuthenticationService.HasCredentials();
-	};
-
 	vm.logout = function() {
 		return AuthenticationService.ClearCredentials();
 	};

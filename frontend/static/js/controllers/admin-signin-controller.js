@@ -6,10 +6,6 @@ angular.module('dream-box-admin').controller('SigninController', ['$scope', 'Aut
 		email : '',
 		password : ''
 	};
-	
-	vm.isLogged = function() {
-		return AuthenticationService.HasCredentials();
-	};
 
 	vm.login = function() {
 		AuthenticationService.Login(vm.credentials.email, vm.credentials.password);
