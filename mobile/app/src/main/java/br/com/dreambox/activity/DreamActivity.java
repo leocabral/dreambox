@@ -1,6 +1,7 @@
 package br.com.dreambox.activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -62,15 +63,15 @@ public class DreamActivity extends AppCompatActivity {
                 new Callback<JsonObject>() {
                     @Override
                     public void success(JsonObject jsonObject, Response response) {
-                        Toast.makeText(DreamActivity.this, "Sonho criado com sucesso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Sonho criado com sucesso", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
-                        Toast.makeText(DreamActivity.this, "Erro, tente novamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Erro, tente novamente", Toast.LENGTH_SHORT).show();
                     }
         });
-//        startActivity(new Intent(this, ProfileActivity.class));
+        startActivity(new Intent(this, ProfileActivity.class));
     }
 
     @OnClick(R.id.dream_add_tag)

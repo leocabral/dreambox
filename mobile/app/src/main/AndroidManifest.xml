@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.dreambox" >
+    package="br.com.dreambox">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,31 +10,32 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/HomeTheme" >
-
         </activity>
         <activity android:name=".activity.DreamActivity" >
+        </activity>
+
+        <activity
+            android:name=".activity.HomeActivity"
+            android:theme="@style/HomeTheme" />
+        <activity android:name=".activity.SignUpActivity" />
+
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:label="@string/title_activity_profile" />
+        <activity android:name=".activity.DreamerActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.HomeActivity" >
-        </activity>
-        <activity android:name=".activity.SignUpActivity" />
-        <activity
-            android:name=".activity.ProfileActivity"
-            android:label="@string/title_activity_profile" />
-        <activity android:name=".activity.DreamerActivity" >
-
-        </activity>
         <activity
             android:name=".activity.DreamDetail"
-            android:label="@string/title_activity_dream_detail" >
-        </activity>
+            android:label="@string/title_activity_dream_detail" />
     </application>
 
 </manifest>
