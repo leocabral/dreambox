@@ -13,7 +13,7 @@
 
     <include
         android:id="@+id/peofile_area"
-        layout="@layout/peofile_area" />
+        layout="@layout/profile_area" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/city_recycler_view"
