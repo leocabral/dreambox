@@ -1,9 +1,9 @@
-package br.com.dreambox.dreambox.activity;
+package br.com.dreambox.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import br.com.dreambox.dreambox.R;
+import br.com.dreambox.R;
 
 public class MainActivity extends AppCompatActivity {
 
