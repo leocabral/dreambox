@@ -1,9 +1,14 @@
 package br.com.dreambox.api;
 
+import android.telecom.Call;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import com.squareup.okhttp.OkHttpClient;
+
+import java.util.Date;
+
 import retrofit.client.OkClient;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -11,7 +16,6 @@ import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
-import retrofit.http.PUT;
 import retrofit.http.Path;
 
 public class DreamboxApi {
@@ -33,11 +37,11 @@ public class DreamboxApi {
         void addDream(@Field("name") String title,
                       @Field("description") String description, @Field("dreamer") long dreamer, Callback<JsonObject> response);
 
-        @PUT("/api/dreams/{dreamId}")
-        @FormUrlEncoded
-        void updateDream(@Path("dreamId") int dreamId, @Field("name") String title,
-                         @Field("description") String description,
-                         Callback<JsonObject> response);
+        @GET("/api/dreams/random")
+        void getRandomDream(Callback<JsonObject> response);
+
+        @GET("/api/dreams/search/{term}")
+        void getSearchDream(@Path("term") String term, Callback<JsonArray> response);
 
         @GET("/api/dreamers")
         void dreamers(Callback<JsonArray> response);
@@ -45,16 +49,18 @@ public class DreamboxApi {
         @GET("/api/dreamers/{dreamerId}")
         void getDreamer(@Path("dreamerId") int dreamerId, Callback<JsonObject> response);
 
+        @GET("/api/dreams/of/{dreamerId}")
+        void getDreamOf(@Path("dreamerId") int dreamerId, Callback<JsonArray> response);
+
         @POST("/api/dreamers")
         @FormUrlEncoded
-        void addDreamer(@Field("name") String title, @Field("lastName") String lastName,
-                        @Field("birthday") String birthday, @Field("nickname") String nickname,
+        void addDreamer(@Field("name") String title, @Field("last_name") String lastName,
+                        @Field("birthday") Date birthday, @Field("nickname") String nickname,
                         @Field("password") String password, @Field("email") String email,
                         @Field("organization") String organization, Callback<JsonObject> response);
 
-        @PUT("/api/dreamers")
-        @FormUrlEncoded
-        void updateDreamer(Callback<JsonObject> response);
+
+
 
     }
 
