@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import br.com.dreambox.dreambox.R;
+import br.com.dreambox.R;
 import butterknife.OnClick;
 
 public class SignUpActivity extends AppCompatActivity {
