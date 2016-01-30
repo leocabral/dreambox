@@ -38,14 +38,7 @@ public class DreamDetail extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                     fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_heart, getApplicationContext().getTheme()));
 
-                /* Código para Compartilhar a url de um sonho a partir de ser ID
-                String url = "http://caixa-de-sonhos.appspot.com/api/dreams/5634472569470976";
-                Intent i = new Intent();
-                i.setAction(Intent.ACTION_SEND);
-                i.putExtra(Intent.EXTRA_TEXT, url);
-                i.setType("text/plain");
-                startActivity(Intent.createChooser(i, "Compartilhe esse sonho!!"));
-                // */
+
             }
         });
     }

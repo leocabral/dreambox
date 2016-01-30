@@ -1,5 +1,6 @@
 package br.com.dreambox.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -88,12 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void setupSearchBox() {
         search.enableVoiceRecognition(this);
-        for (int x = 0; x < 10; x++) {
-            // linha abaixo adiciona sugestões da busca baseado no que já foi digitado
-            SearchResult option = new SearchResult("Result " + Integer.toString(x), getResources().getDrawable(R.drawable.ic_clear));
-            search.addSearchable(option);
-        }
-        search.setSearchListener(new SearchListener() {
 
         DreamboxApi.get().dreams(new Callback<JsonArray>() {
             @Override
@@ -105,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     String title = obj.get("name_search").getAsString();
                     String descr = obj.get("description").getAsString();
                     Dream d = new Dream(title, descr);
+                    d.setId(obj.get("id").getAsInt());
                     try {
                         d.fromJson(obj);
                         MainActivity.this.dreams.add(d);
@@ -159,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                             cd.description.setText(d.getDescription());
                             cd.dreamTitle.setText(d.getTitle());
                             cd.nameDreamer.setText(d.getDreamer().getName());
+                            cd.setDreamID(d.getId());
                             break;
                         }
 
@@ -193,7 +190,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         search.setMenuListener(new SearchBox.MenuListener() {
-
             @Override
             public void onMenuClick() {
                 mDrawerLayout.openDrawer(GravityCompat.START);
@@ -249,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
             currentDream = LayoutInflater.from(this).inflate(R.layout.card_dream_detail, null, false);
 
             CardDreamHolder cd = new CardDreamHolder(currentDream);
-            DreamboxApi.get().getRandomDream(new Callback<JsonArray>() {
+            /*DreamboxApi.get().getRandomDream(new Callback<JsonArray>() {
                 @Override
                 public void success(JsonArray jsonElements, Response response) {
                     JsonObject obj = jsonElements.get(0).getAsJsonObject();
@@ -274,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
                 public void failure(RetrofitError error) {
 
                 }
-            });
+            }); */
             mDreamCardContainer.addView(currentDream);
 
             DisplayMetrics displayMetrics = ViewUtils.getDisplayMetrics(this);
@@ -332,18 +328,30 @@ public class MainActivity extends AppCompatActivity {
         @Bind(R.id.description_dream)
         TextView description;
 
+        private int idDream;
+
         public CardDreamHolder(View v) {
             ButterKnife.bind(this, v);
         }
 
+        public void setDreamID(int id){this.idDream = id;}
+
         @OnClick(R.id.follow_button)
         public void followClick() {
+            // fazer o code para post de follow :P
 
         }
 
         @OnClick(R.id.share_button)
         public void shareClick() {
-
+            ///* Código para Compartilhar a url de um sonho a partir de ser ID
+                String url = "http://caixa-de-sonhos.appspot.com";//api/dreams/5634472569470976";
+                Intent i = new Intent();
+                i.setAction(Intent.ACTION_SEND);
+                i.putExtra(Intent.EXTRA_TEXT, url);
+                i.setType("text/plain");
+                startActivity(Intent.createChooser(i, "Compartilhe esse sonho!!"));
+            // */
         }
     }
 
