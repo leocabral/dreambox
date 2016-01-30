@@ -86,3 +86,4 @@ class DreamersAPI(webapp2.RequestHandler):
 
 	def delete(self, dreamer_id):
 		Dreamers.find(int(dreamer_id)).key.delete()
+

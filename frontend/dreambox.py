@@ -12,7 +12,12 @@ app = webapp2.WSGIApplication([
 	webapp2.Route(r'/api/dreams/of/<:\d+>', handler=dreams.DreamsAPI, handler_method='list_by_dreamer', methods=['GET']),
 	webapp2.Route(r'/api/dreams/<:\d+>', handler=dreams.DreamsAPI, handler_method='mantain', methods=['GET', 'PUT', 'DELETE']),
 	webapp2.Route(r'/api/dreams/search/<:.+>', handler=dreams.DreamsAPI, handler_method='search', methods=['GET']),
+
 	webapp2.Route(r'/api/dreamers', handler=dreamers.DreamersAPI, handler_method='list', methods=['GET']),
 	webapp2.Route(r'/api/dreamers', handler=dreamers.DreamersAPI, handler_method='post', methods=['POST']),
-	webapp2.Route(r'/api/dreamers/<:\d+>', handler=dreamers.DreamersAPI, handler_method='mantain', methods=['GET', 'PUT', 'DELETE'])
+	webapp2.Route(r'/api/dreamers/<:\d+>', handler=dreamers.DreamersAPI, handler_method='mantain', methods=['GET', 'PUT', 'DELETE']),
+
+	webapp2.Route(r'/api/helpers', handler=helpers.HelpersAPI, handler_method='list', methods=['GET']),
+	webapp2.Route(r'/api/helpers', handler=helpers.HelpersAPI, handler_method='post', methods=['POST']),
+	webapp2.Route(r'/api/helpers/<:\d+>', handler=helpers.HelpersAPI, handler_method='mantain', methods=['GET', 'PUT', 'DELETE'])
 ], debug=True)
