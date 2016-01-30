@@ -244,7 +244,7 @@ background-color: #fff;
 	-webkit-transform: scale(0.2);
 	-moz-transform: scale(0.2);
 	transform:scale(0.2);
-	
+	text-align: center;	
 }
 
 .dreamer-avatar {
