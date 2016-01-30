@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:scrolling_image_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,33 +12,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <FrameLayout
-        android:id="@+id/clouds"
+    <View
+        android:id="@+id/target_clouds_tutorial"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/search_box"
+        android:layout_centerInParent="true"
+        app:layout_heightPercent="50%"
+        app:layout_widthPercent="50%" />
+
+    <include
+        layout="@layout/clouds_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_box"
-        android:layout_marginTop="10dp">
-
-        <com.q42.android.scrollingimageview.ScrollingImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            scrolling_image_view:speed="0.1dp"
-            scrolling_image_view:src="@drawable/cloud_3" />
-
-        <com.q42.android.scrollingimageview.ScrollingImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            scrolling_image_view:speed="0.2dp"
-            scrolling_image_view:src="@drawable/cloud_1" />
-
-        <com.q42.android.scrollingimageview.ScrollingImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-5dp"
-            scrolling_image_view:speed="0.15dp"
-            scrolling_image_view:src="@drawable/cloud_2" />
-    </FrameLayout>
+        android:layout_marginTop="10dp" />
 
     <ImageView
         android:layout_width="match_parent"

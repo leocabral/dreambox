@@ -329,8 +329,13 @@ window.addEventListener(
 
 
 
-$('img.robot').unbind('click').click(function() {
-	console.info('aeho');
+$('img.robot').unbind('click').click(function(e) {
+    $('.thinking').fadeIn();
+    e.stopPropagation();
+});
+
+$(document).on('click',function() {
+    $('.thinking').fadeOut();
 });
 
 var clouds = 0;
@@ -370,7 +375,7 @@ $('#clouds').on('click', '> div', function() {
 	$(this).html(
 			  '<div class="opened-dream">'
 			 + '<img src="avatar.png" class="dreamer-avatar" />'
-			 + '<span class="dream-title">Title</span>'
+			 + '<div class="dream-title">Title</div>'
 			 + 'Sempre sonhei em ser HU3HU3BR'
 			+ '</div>');
 });
