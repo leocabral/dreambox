@@ -1,0 +1,89 @@
+/*Lets start with the cloud formation rather*/
+
+/*The container will also serve as the SKY*/
+
+*{ margin: 0; padding: 0;}
+body {
+	/*To hide the horizontal scroller appearing during the animation*/
+	background-color: #000000;
+	margin: 0px;
+	overflow: hidden;
+}
+
+canvas {
+	position: absolute;
+	top: 0;
+}
+
+img {
+  position : absolute;
+  right: 0;
+  bottom: 0;
+  margin-bottom: -130px;
+  transform: rotate(10deg);  
+  z-index: 9999;
+}
+
+#clouds{
+	position: relative;
+	height: 100%;
+	z-index: 9999;
+}
+
+/*Time to finalise the cloud shape*/
+.cloud {
+	width: 200px; height: 60px;
+	background: #fff;
+	
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+	
+	position: absolute; 
+}
+
+.cloud:before, .cloud:after {
+	content: '';
+	position: absolute; 
+	background: #fff;
+	width: 100px; height: 80px;
+	position: absolute; top: -15px; left: 10px;
+	
+	border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+	
+	-webkit-transform: rotate(30deg);
+	transform: rotate(30deg);
+	-moz-transform: rotate(30deg);
+}
+
+.cloud:after {
+	width: 120px; height: 120px;
+	top: -55px; left: auto; right: 15px;
+}
+
+@-webkit-keyframes moveclouds {
+	0% {margin-left: 100%;}
+	100% {margin-left: -100%;}
+}
+@-moz-keyframes moveclouds {
+	0% {margin-left: 100%;}
+	100% {margin-left: -100%;}
+}
+@-o-keyframes moveclouds {
+	0% {margin-left: 100%;}
+	100% {margin-left: -100%;}
+}
+.search {
+	position: absolute;
+}
+.clouds {
+	
+}
+.grass {
+	
+}
+.character {
+	
+}
