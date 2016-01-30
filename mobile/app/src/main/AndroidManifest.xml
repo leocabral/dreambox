@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.dreambox">
+    package="br.com.dreambox" >
 
     <application
         android:name=".application.DreamBoxApp"
@@ -11,22 +11,20 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/HomeTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.DreamActivity" >
+            android:theme="@style/HomeTheme" >
+
         </activity>
         <activity android:name=".activity.HomeActivity" >
-
         </activity>
         <activity android:name=".activity.SignUpActivity" />
         <activity
             android:name=".activity.ProfileActivity"
             android:label="@string/title_activity_profile" />
-        <activity android:name=".activity.DreamerActivity">
+        <activity android:name=".activity.DreamerActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.DreamDetail"

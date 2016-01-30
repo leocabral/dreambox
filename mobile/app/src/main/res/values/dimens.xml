@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="default_activity_margin">16dp</dimen>
     <dimen name="avatar_margin">25dp</dimen>
-    <dimen name="edit_margin">30dp</dimen>
+    <dimen name="edit_margin">15dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="title_text_dream_detail">24dp</dimen>
     <dimen name="text_dream_detail">21dp</dimen>

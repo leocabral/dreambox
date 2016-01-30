@@ -18,7 +18,7 @@
 
     <string name="title_activity_home">Home</string>
     <string name="title_activity_profile">ProfileActivity</string>
-    <string name="name_field">Nome completo</string>
+    <string name="name_field">Nome</string>
     <string name="nickname_field">Apelido (será seu login no Dreambox)</string>
     <string name="password_field">Senha</string>
     <string name="dreamer_button">Torne-se um sonhador !!</string>
@@ -31,4 +31,5 @@
     <string name="dreamer_name">Sonhador</string>
     <string name="dream_title">Titulo sonho</string>
     <string name="description_detail">Só uma pequena descrição lalalalalalaasldjasd asdjsaldjaslkdj laskdjsakl jaskldj asldkj salk js</string>
+    <string name="last_name_field">Sobrenome</string>
 </resources>
