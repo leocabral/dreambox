@@ -60,6 +60,9 @@ img {
 	
 }
 
+.robot {
+    cursor:pointer;
+}
 .thinking {
     bottom: 0;
     height: 300px;
@@ -67,6 +70,7 @@ img {
     right: 0;
     width: 250px;
     z-index: 9999;
+    display: none;
 }
 .thinking ul li {
 	width: 200px; height: 60px;
@@ -114,17 +118,52 @@ img {
 .search {
 	position: absolute;
 }
-.clouds {
-	
+
+.x2 .first-ball, .x2 .second-ball {
+    background-color: white;
+    border-radius: 30px;
+    height: 30px;
+    margin-left: 130px;
+    margin-top: 20px;
+    width: 30px;
 }
-.grass {
-	
+.x2 .second-ball {
+    height: 15px;
+    margin-left: 168px;
+    width: 15px;
 }
-.character {
-	
+.x3 .first-ball, x3.second-ball {
+    background-color: white;
+    border-radius: 30px;
+    height: 30px;
+    margin-left: 130px;
+    margin-top: 20px;
+    width: 30px;
+    
+    position: absolute;
+    left: 90px;
+    top: 8px;
+}
+.x3 .second-ball {
+background-color: #fff;
+    border-radius: 10px;
+    height: 15px;
+    margin-left: 264px;
+    width: 15px;
 }
 
 
+.with-hover:hover:after,
+.with-hover:hover:before,
+.with-hover:hover,
+.with-hover:hover .first-ball,
+.with-hover:hover .second-ball{
+    background: #DDD none repeat scroll 0 0
+}
+.with-hover {
+    cursor:pointer;
+    
+}
 .x2 {
 	left: 0px;
 	
@@ -132,5 +171,40 @@ img {
 	-moz-transform: scale(0.6);
 	transform: scale(0.6);
 	opacity: 1; /*opacity proportional to the size*/
+}
+
+.x2 .opened-dream {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 11px auto 0;
+    width: 87%;
+    
+}
+
+.x3 {
+    top: 82px;
+	left: -80px;
 	
+	-webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+	transform: scale(0.6);
+	opacity: 1; /*opacity proportional to the size*/
+}
+
+.x3 .opened-dream {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 11px auto 0;
+    width: 77%;
+    
+}
+
+.opened-dream {
+    position: relative;
+    z-index: 1;
+    font-size: 4px;
+    margin: 0 auto;
+    width: 50%;
+    height: 78%;
+    /* border: 1px solid black; */
 }

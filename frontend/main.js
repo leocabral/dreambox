@@ -329,8 +329,13 @@ window.addEventListener(
 
 
 
-$('img.robot').unbind('click').click(function() {
-	
+$('img.robot').unbind('click').click(function(e) {
+    $('.thinking').fadeIn();
+    e.stopPropagation();
+});
+
+$(document).on('click',function() {
+    $('.thinking').fadeOut();
 });
 
 var clouds = 0;
@@ -367,4 +372,5 @@ buildCreator(1200);
 
 $('#clouds').on('click', '> div', function() {
 	$(this).addClass('active-cloud');
+	$(this).html('<div class="opened-dream">Sempre sonhei em ser HU3HU3BR</div>');
 });
