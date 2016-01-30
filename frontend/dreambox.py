@@ -12,6 +12,7 @@ app = webapp2.WSGIApplication([
 	webapp2.Route(r'/api/dreams/of/<:\d+>', handler=dreams.DreamsAPI, handler_method='list_by_dreamer', methods=['GET']),
 	webapp2.Route(r'/api/dreams/<:\d+>', handler=dreams.DreamsAPI, handler_method='mantain', methods=['GET', 'PUT', 'DELETE']),
 	webapp2.Route(r'/api/dreams/search/<:.+>', handler=dreams.DreamsAPI, handler_method='search', methods=['GET']),
+	webapp2.Route(r'/api/dreams/<:\d+>/add_follower', handler=dreams.DreamsAPI, handler_method='add_follower', methods=['PUT']),
 
 	webapp2.Route(r'/api/dreamers', handler=dreamers.DreamersAPI, handler_method='list', methods=['GET']),
 	webapp2.Route(r'/api/dreamers', handler=dreamers.DreamersAPI, handler_method='post', methods=['POST']),
