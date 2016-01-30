@@ -112,9 +112,11 @@ var Cloud = (function() {
 
 		createSigninPopup : function() {
 			this.cleanActive();
-			var cloud = this.anyCloud();
+			var cloud = Cloud.create();
 			$.get('templates/signin.html').done(function(template) {
 				var html = doT.template(template)({
+					'origin' : window.location.origin
+				});
 
 				cloud.animate({
 					left : ($(window).width()/2-$(cloud).width()/2)+'px',
@@ -140,7 +142,7 @@ var Cloud = (function() {
 
 		createSignupPopup : function() {
 			this.cleanActive();
-			var cloud = this.anyCloud();
+			var cloud = Cloud.create();
 			$.get('templates/signup.html').done(function(template) {
 				var html = doT.template(template)({
 					'origin' : window.location.origin
