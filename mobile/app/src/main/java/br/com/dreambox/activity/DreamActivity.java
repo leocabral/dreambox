@@ -47,27 +47,25 @@ public class DreamActivity extends AppCompatActivity {
         startActivity(new Intent(this, ProfileActivity.class));
     }
 
+    @OnClick(R.id.dream_add_tag)
+    public void addTag() {
+        tagContainerLayout.addTag(textTag.getText().toString());
+    }
 
     public void setupTagGroup() {
         tagContainerLayout.setOnTagClickListener(new TagView.OnTagClickListener() {
             @Override
-            public void onTagClick(int position, String text) {
-                Toast.makeText(DreamActivity.this, "click-position:" + position + ", text:" + text,
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onTagLongClick(final int position, String text) {
+            public void onTagClick(final int position, String text) {
                 AlertDialog dialog = new AlertDialog.Builder(DreamActivity.this)
-                        .setTitle("long click")
-                        .setMessage("You will delete this tag!")
-                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        .setTitle("Excluir tag")
+                        .setMessage("Deseja excluir essa tag ?")
+                        .setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 tagContainerLayout.removeTag(position);
                             }
                         })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
@@ -76,15 +74,15 @@ public class DreamActivity extends AppCompatActivity {
                         .create();
                 dialog.show();
             }
+
+            @Override
+            public void onTagLongClick(int position, String text) {
+                return;
+            }
+
         });
 
         tagContainerLayout.setTags(listTag);
-
-        btnAddTag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tagContainerLayout.addTag(textTag.getText().toString());
-            }
-        });
     }
 }
+
