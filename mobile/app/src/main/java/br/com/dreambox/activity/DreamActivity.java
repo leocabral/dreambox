@@ -17,7 +17,6 @@ import java.util.List;
 
 import br.com.dreambox.R;
 import br.com.dreambox.api.DreamboxApi;
-import br.com.dreambox.model.Dream;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -57,9 +56,10 @@ public class DreamActivity extends AppCompatActivity {
 
     @OnClick(R.id.create_dream_button)
     protected void createDream() {
-        Dream dream = new Dream(dreamTitle.getText().toString(), dreamDescription.getText().toString());
+        String title = dreamTitle.getText().toString();
+        String description = dreamDescription.getText().toString();
 
-        DreamboxApi.get().addDream(dream.getTitle(), dream.getDescription(), 5639445604728832L,
+        DreamboxApi.get().addDream(title, description, 5639445604728832L,
                 new Callback<JsonObject>() {
                     @Override
                     public void success(JsonObject jsonObject, Response response) {
@@ -70,7 +70,7 @@ public class DreamActivity extends AppCompatActivity {
                     public void failure(RetrofitError error) {
                         Toast.makeText(getApplicationContext(), "Erro, tente novamente", Toast.LENGTH_SHORT).show();
                     }
-        });
+                });
         startActivity(new Intent(this, ProfileActivity.class));
     }
 

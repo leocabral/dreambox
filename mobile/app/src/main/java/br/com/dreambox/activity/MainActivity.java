@@ -1,6 +1,5 @@
 package br.com.dreambox.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,12 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.quinny898.library.persistentsearch.SearchBox;
 import com.quinny898.library.persistentsearch.SearchBox.SearchListener;
 import com.quinny898.library.persistentsearch.SearchResult;
-
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.navigation_view)
     NavigationView mNavigationView;
 
-    @Bind(R.id.loading)
+    @Bind(R.id.home_loading)
     ProgressBar mProgressBar;
 
     private View currentDream;
@@ -85,88 +83,55 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupSearchBox() {
-
-        ProgressBar pb = (ProgressBar) findViewById(R.id.loading);
-        pb.setVisibility(ProgressBar.VISIBLE);
-
-        DreamboxApi.get().dreams(new Callback<JsonArray>() {
-            @Override
-            public void success(JsonArray jsonElements, Response response) {
-                for (int x = 0; x < jsonElements.size(); x++) {
-                    // linha abaixo adiciona sugestões da busca baseado no que já foi digitado
-                    JsonObject obj = (JsonObject) jsonElements.getAsJsonArray().get(x);
-                    String title = obj.get("name_search").getAsString();
-                    String descr = obj.get("description").getAsString();
-                    Dream d = new Dream(title, descr);
-                    d.setId(obj.get("id").getAsLong());
-                    try {
-                        d.fromJson(obj);
-                        dreams.add(d);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    SearchResult option = new SearchResult(title, getResources().getDrawable(R.drawable.ic_clear));
-                    search.addSearchable(option);
-                }
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Toast.makeText(MainActivity.this, "API GET got wrong ;-;", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        pb.setVisibility(ProgressBar.INVISIBLE);
-
         search.enableVoiceRecognition(this);
+        search.setHint(getString(R.string.dream_search));
+
+        for (int x = 0; x < 10; x++) {
+            SearchResult option = new SearchResult("Result " + Integer.toString(x), getResources().getDrawable(R.drawable.ic_clear));
+            search.addSearchable(option);
+        }
+
         search.setSearchListener(new SearchListener() {
             @Override
-            public void onSearchOpened() {}
-
-            @Override
-            public void onSearchClosed() {// quando a aba de possíveis respostas fecha
+            public void onSearchOpened() {
             }
 
             @Override
-            public void onSearchTermChanged(String searchTerm) {//toda vez que uma letra mudar e consequentemente alterar as sugestões de busca
+            public void onSearchClosed() {
+                // quando a aba de possíveis respostas fecha
             }
 
             @Override
-            public void onSearch(String searchTerm) {}
+            public void onSearchTermChanged(String searchTerm) {
+                DreamboxApi.get().dreams(new Callback<JsonArray>() {
+                    @Override
+                    public void success(JsonArray jsonElements, Response response) {
+                        for (JsonElement x : jsonElements) {
+                            JsonObject obj = x.getAsJsonObject();
+                            dreams.add(Dream.fromJson(obj));
+
+                            String title = obj.get("name_search").getAsString();
+
+                            SearchResult option = new SearchResult(title, getResources().getDrawable(R.drawable.ic_clear));
+                            search.addSearchable(option);
+                        }
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Toast.makeText(MainActivity.this, "API GET got wrong ;-;", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onSearch(String searchTerm) {
+            }
 
             @Override
             public void onResultClick(final SearchResult result) {
                 // basicamente esse é o método quando um resultado é selecionado
-                if (currentDream == null) {
-                    mProgressBar.setVisibility(ProgressBar.VISIBLE);
-
-                    for(Dream d : MainActivity.this.dreams)
-                        if (d.getTitle().equalsIgnoreCase(result.toString().trim())) {
-                            cd.fillFields(d);
-                            break;
-                        }
-
-                    MainActivity.this.mDreamCardContainer.addView(currentDream);
-
-                    DisplayMetrics displayMetrics = ViewUtils.getDisplayMetrics(MainActivity.this);
-                    ScaleAnimation anim = new ScaleAnimation(0.1f, 1f, 0.1f, 1f,
-                            displayMetrics.widthPixels / 2, displayMetrics.heightPixels / 2);
-                    anim.setDuration(400);
-
-                    anim.setFillAfter(true);
-                    currentDream.startAnimation(anim);
-
-                    mDreamCardContainer.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
-                        @Override
-                        public void onSwipeTop() {
-                            removeCurrentDream();
-                        }
-                    });
-                    return;
-                }
-
-                removeCurrentDream();
+//                d.getTitle().equalsIgnoreCase(result.toString().trim())
             }
 
             @Override
@@ -175,11 +140,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         search.setMenuListener(new SearchBox.MenuListener() {
+
             @Override
             public void onMenuClick() {
                 mDrawerLayout.openDrawer(GravityCompat.START);
             }
-
         });
     }
 
@@ -206,9 +171,9 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
 
                 switch (item.getItemId()) {
-                    case R.id.item_1:
+                    case R.id.home_item:
                         return true;
-                    case R.id.item_2:
+                    case R.id.fulfilled_dreams_item:
                         return true;
                     default:
                         return true;
@@ -225,14 +190,8 @@ public class MainActivity extends AppCompatActivity {
             DreamboxApi.get().getRandomDream(new Callback<JsonObject>() {
                 @Override
                 public void success(JsonObject jsonObject, Response response) {
-                    Dream dream = new Dream(jsonObject.get("name_search").getAsString(), jsonObject.get("description").getAsString());
-                    dream.setId(jsonObject.get("id").getAsLong());
-                    try {
-                        dream.fromJson(jsonObject);
-                        showDreamCardView(dream);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    Dream dream = Dream.fromJson(jsonObject);
+                    showDreamCardView(dream);
                 }
 
                 @Override
@@ -294,7 +253,8 @@ public class MainActivity extends AppCompatActivity {
         currentDream.startAnimation(animation);
     }
 
-    public class CardDreamViewHolder {
+    static class CardDreamViewHolder {
+
         @Bind(R.id.name_dreamer)
         TextView nameDreamer;
 
@@ -304,8 +264,6 @@ public class MainActivity extends AppCompatActivity {
         @Bind(R.id.description_dream)
         TextView description;
 
-        private long idDream;
-
         public CardDreamViewHolder(View v) {
             ButterKnife.bind(this, v);
         }
@@ -314,25 +272,21 @@ public class MainActivity extends AppCompatActivity {
             this.description.setText(d.getDescription());
             this.dreamTitle.setText(d.getTitle());
             this.nameDreamer.setText(d.getDreamer().getName());
-            this.idDream = d.getId();
         }
 
         @OnClick(R.id.follow_button)
         public void followClick() {
             // fazer o code para post de follow :P
-
         }
 
         @OnClick(R.id.share_button)
         public void shareClick() {
-            ///* Código para Compartilhar a url de um sonho a partir de ser ID
-                String url = "http://caixa-de-sonhos.appspot.com";//api/dreams/5634472569470976";
-                Intent i = new Intent();
-                i.setAction(Intent.ACTION_SEND);
-                i.putExtra(Intent.EXTRA_TEXT, url);
-                i.setType("text/plain");
-                startActivity(Intent.createChooser(i, "Compartilhe esse sonho!!"));
-            // */
+//            String url = "http://caixa-de-sonhos.appspot.com";
+//            Intent i = new Intent();
+//            i.setAction(Intent.ACTION_SEND);
+//            i.putExtra(Intent.EXTRA_TEXT, url);
+//            i.setType("text/plain");
+//            startActivity(Intent.createChooser(i, "Compartilhe esse sonho!!"));
         }
     }
 
@@ -344,4 +298,5 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onBackPressed();
     }
+
 }

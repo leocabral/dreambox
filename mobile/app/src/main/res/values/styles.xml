@@ -21,4 +21,9 @@
 
     </style>
 
+    <style name="NavigationViewStyle" parent="Widget.Design.NavigationView">
+        <item name="android:background">@color/graacc_blue</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>
