@@ -41,22 +41,19 @@ img {
 	border-radius: 200px;
 	-moz-border-radius: 200px;
 	-webkit-border-radius: 200px;
-	
+	left: 0;
 	position: absolute; 
-	transition: transform 1s linear, top 1s linear, opacity 1s linear;
+	transition: left 1s linear, transform 1s linear, top 1s linear, opacity 1s linear;
 }
 
 .cloud.active-cloud {
 	top: 410px !important;
-	left: calc(50vw - 110px) !important;
+	
 	opacity: 1 !important;
 	z-index: 1;
 	-webkit-transform: scale(5) !important;
 	-moz-transform: scale(5) !important;
 	transform:scale(5) !important;
-	-webkit-animation: initial !important;
-	-moz-animation:initial !important;
-	-o-animation:initial !important;
 	
 }
 
@@ -105,16 +102,16 @@ img {
 
 
 @-webkit-keyframes moveclouds {
-	0% {margin-left: 100%;}
-	100% {margin-left: -100%;}
+	0% {left: 100%;}
+	100% {left: -100%;}
 }
 @-moz-keyframes moveclouds {
-	0% {margin-left: 100%;}
-	100% {margin-left: -100%;}
+	0% {left: 100%;}
+	100% {left: -100%;}
 }
 @-o-keyframes moveclouds {
-	0% {margin-left: 100%;}
-	100% {margin-left: -100%;}
+	0% {left: 100%;}
+	100% {left: -100%;}
 }
 .search {
 	position: absolute;
