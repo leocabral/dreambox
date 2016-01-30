@@ -59,7 +59,7 @@
             android:background="@layout/gradient" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/edit_profile"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_alignParentRight="true"
