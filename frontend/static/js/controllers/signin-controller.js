@@ -1,15 +1,16 @@
 angular.module('dream-box').controller('SigninController', ['$scope', '$http', function($scope, $http){
 	var vm = this;
 	vm.credentials = {
-		username : '',
+		email : '',
 		password : ''
 	};
 
 	vm.login = function() {
-		$http.post('/api/helpers', vm.credentials).then(function(){
-			console.log(arguments);
-		}, function(){
-			console.log(arguments);
+		$http.post('/api/helpers/login', vm.credentials).then(function(response){
+			Helper.login(response);
+			Cloud.cleanActive();
+		}, function(response){
+			Helper.logout();
 		});
 	};
 }]);

@@ -40,7 +40,7 @@ public class DreamAdapter extends RecyclerView.Adapter<DreamAdapter.DreamViewHol
         Dream dream = mDreams.get(position);
 
         holder.mDreamTitle.setText(dream.getTitle());
-        holder.mRealized.setChecked(dream.getRealized());
+        holder.mRealized.setChecked(dream.isRealized());
         holder.itemView.setOnClickListener(mDreamOnClickListener.onClick(dream));
     }
 

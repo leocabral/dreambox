@@ -9,18 +9,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/HomeTheme">
-
-        </activity>
-
-        <activity android:name=".activity.DreamActivity" />
-
-        <activity android:name=".activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,17 +21,22 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".activity.DreamActivity" />
+
+        <activity android:name=".activity.HomeActivity" />
+
         <activity android:name=".activity.SignUpActivity" />
 
         <activity
             android:name=".activity.ProfileActivity"
             android:label="@string/title_activity_profile" />
-        <activity android:name=".activity.DreamerActivity"></activity>
+        <activity android:name=".activity.DreamerActivity" />
+
         <activity
             android:name=".activity.DreamDetail"
             android:label="@string/title_activity_dream_detail" />
 
         <activity android:name=".activity.EditProfileActivity" />
-    </application>
 
+    </application>
 </manifest>
