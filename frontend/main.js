@@ -372,5 +372,10 @@ buildCreator(1200);
 
 $('#clouds').on('click', '> div', function() {
 	$(this).addClass('active-cloud');
-	$(this).html('<div class="opened-dream">Sempre sonhei em ser HU3HU3BR</div>');
+	$(this).html(
+			  '<div class="opened-dream">'
+			 + '<img src="avatar.png" class="dreamer-avatar" />'
+			 + '<span class="dream-title">Title</span>'
+			 + 'Sempre sonhei em ser HU3HU3BR'
+			+ '</div>');
 });

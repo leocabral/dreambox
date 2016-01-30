@@ -5,5 +5,6 @@ from models import *
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/api/dreams', dreams.DreamsAPI)
+    ('/api/dreams', dreams.DreamsAPI),
+    ('/api/dreamers', dreamers.DreamersAPI) 
 ], debug=True)
