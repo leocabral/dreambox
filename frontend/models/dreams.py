@@ -65,7 +65,7 @@ class DreamsAPI(webapp2.RequestHandler):
 		dream = Dreams(
 					name = self.request.get('name'),
 					description = self.request.get('description'),
-					tags = json.loads(self.request.get('tags')),
+					tags = self.request.get('tags'),
 					dreamer = int(self.request.get('dreamer')))
 
 		self.response.headers['Content-Type'] = 'application/json'
