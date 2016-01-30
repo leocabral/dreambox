@@ -120,7 +120,7 @@ public class Dreamer {
 
             @Override
             public void failure(RetrofitError error) {
-                System.out.println("DEu erro de get dentro da classe Dreamer");
+                System.out.println("Deu erro de get dentro da classe Dreamer");
             }
         });
     }
