@@ -14,7 +14,7 @@ public class Dream {
     private Dreamer dreamer;
     private Date creationDate;
     private Boolean realized;
-    private int id;
+    private long id;
 
     public Dream(String title, String description) {
         this.title = title;
@@ -63,8 +63,8 @@ public class Dream {
         this.realized = realized;
     }
 
-    public void setId(int id) {this.id = id;}
-    public int getId(){return this.id;}
+    public void setId(long id) {this.id = id;}
+    public long getId(){return this.id;}
 
     public void fromJson(JsonObject obj) throws JSONException {
         this.dreamer = new Dreamer();
