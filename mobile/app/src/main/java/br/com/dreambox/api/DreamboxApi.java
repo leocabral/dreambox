@@ -6,6 +6,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import com.squareup.okhttp.OkHttpClient;
+
+import java.util.Date;
+
 import retrofit.client.OkClient;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -52,7 +55,7 @@ public class DreamboxApi {
         @POST("/api/dreamers")
         @FormUrlEncoded
         void addDreamer(@Field("name") String title, @Field("last_name") String lastName,
-                        @Field("birthday") String birthday, @Field("nickname") String nickname,
+                        @Field("birthday") Date birthday, @Field("nickname") String nickname,
                         @Field("password") String password, @Field("email") String email,
                         @Field("organization") String organization, Callback<JsonObject> response);
 

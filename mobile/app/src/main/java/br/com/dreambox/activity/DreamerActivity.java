@@ -10,6 +10,10 @@ import com.codetroopers.betterpickers.datepicker.DatePickerBuilder;
 import com.codetroopers.betterpickers.datepicker.DatePickerDialogFragment;
 import com.google.gson.JsonObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import br.com.dreambox.R;
 import br.com.dreambox.api.DreamboxApi;
 import br.com.dreambox.model.Dreamer;
@@ -55,7 +59,13 @@ public class DreamerActivity extends AppCompatActivity implements DatePickerDial
     public void createDreamer() {
         Dreamer dreamer = new Dreamer();
 
-        dreamer.setBirthday(birthday.getText().toString());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/mm/dd");
+        Date date = null;
+        try {
+            date = format.parse(birthday.getText().toString());
+        } catch (ParseException e) {
+        }
+        dreamer.setBirthday(date);
         dreamer.setName(name.getText().toString());
         dreamer.setEmail(email.getText().toString());
         dreamer.setFoundation(organization.getText().toString());
