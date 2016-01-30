@@ -39,6 +39,13 @@ $('#sign-in').unbind('click').click(function(e){
 	Cloud.createSigninPopup();
 });
 
+$('#salvar-sonho').unbind('click').click(function() {
+    $.post('/api/dreams',{
+       name: $('#titulo-sonho').val(),
+        description: $('#descricao-sonho').val(),
+        dreamer: 5639445604728832
+    });
+})
 Cloud.buildCreator(800);
 Cloud.buildCreator(1000);
 Cloud.buildCreator(1200);
@@ -67,7 +74,7 @@ if (params) {
 	if (entry[0] == '?id') {
 		var id = entry[1].replace('/', "");
 		var cloud = Cloud.create();
-		$.getJSON('/api/dreams/' + id).done(function(dream) {
+		Dream.service.find(id, function(dream) {
 			Cloud.open(cloud, dream);
 		});
 	}

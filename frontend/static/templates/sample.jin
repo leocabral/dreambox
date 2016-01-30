@@ -3,6 +3,7 @@
 {% block content %}
 	<div class="search">
 		<input type="text" />
+        <button type="button"><img src="/img/search.png"></button>
 	</div>
 	<div id="clouds">
         <div class="cloud" id="new-cloud">
@@ -63,6 +64,7 @@
 	<script src="js/doT.min.js"></script>
 	<script src="js/grass.js"></script>
 	<script src="js/user.js"></script>
+	<script src="js/dream.js"></script>
 	<script src="js/cloud.js"></script>
 	<script src="js/main.js"></script>
     <script src="js/controllers/signup-controller.js"></script>
