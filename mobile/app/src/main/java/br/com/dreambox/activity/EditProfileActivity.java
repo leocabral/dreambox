@@ -86,12 +86,12 @@ public class EditProfileActivity extends AppCompatActivity {
 
             @Override
             public void success(JsonObject jsonObject, Response response) {
-                Toast.makeText(getBaseContext(), "Sonhador atualizado!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), R.string.dreamer_updated, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void failure(RetrofitError error) {
-                Toast.makeText(getBaseContext(), "Sonhador não atualizado!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), R.string.dreamer_not_updated, Toast.LENGTH_LONG).show();
             }
         });
     }

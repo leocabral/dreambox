@@ -41,4 +41,7 @@
     <string name="sign_in">Logar</string>
     <string name="new_dream">Novo sonho</string>
     <string name="dream_search">Busque um sonho</string>
+
+    <string name="dreamer_updated">Sonhador atualizado!</string>
+    <string name="dreamer_not_updated">Sonhador não atualizado!</string>
 </resources>
