@@ -76,22 +76,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private String getAgeAndLocation(Dreamer dreamer) {
-        int age = getAge(dreamer.getBirthday());
-        String strAge = String.valueOf(age) + " anos";
+        String strAge = String.valueOf(dreamer.getAge()) + " anos";
         return strAge + ", " + dreamer.getCity() + " - " + dreamer.getState();
-    }
-
-    private int getAge(Date birthday) {
-        Calendar today = Calendar.getInstance();
-        Calendar bday = Calendar.getInstance();
-        bday.setTime(birthday);
-        int age = today.get(Calendar.YEAR) - bday.get(Calendar.YEAR);
-        if (today.get(Calendar.MONTH) < bday.get(Calendar.MONTH) ||
-                (today.get(Calendar.MONTH) == bday.get(Calendar.MONTH) &&
-                        today.get(Calendar.DAY_OF_MONTH) <= bday.get(Calendar.DAY_OF_MONTH))) {
-            age++;
-        }
-        return age;
     }
 
     public Dreamer getDreamer() {

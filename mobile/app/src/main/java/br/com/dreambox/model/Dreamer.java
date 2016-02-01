@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import org.parceler.Parcel;
 
+import java.util.Calendar;
 import java.util.Date;
 
 @Parcel
@@ -108,5 +109,18 @@ public class Dreamer {
         dreamer.name = json.get("name").getAsString();
 
         return dreamer;
+    }
+
+    public int getAge() {
+        Calendar today = Calendar.getInstance();
+        Calendar bday = Calendar.getInstance();
+        bday.setTime(getBirthday());
+        int age = today.get(Calendar.YEAR) - bday.get(Calendar.YEAR);
+        if (today.get(Calendar.MONTH) < bday.get(Calendar.MONTH) ||
+                (today.get(Calendar.MONTH) == bday.get(Calendar.MONTH) &&
+                        today.get(Calendar.DAY_OF_MONTH) <= bday.get(Calendar.DAY_OF_MONTH))) {
+            age++;
+        }
+        return age;
     }
 }
